@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Analyse 1 — Aperçu Général | Netflix</title>
+  <style>
+    :root { --red:#E50914; --dark:#141414; --dark2:#1f1f1f; --dark3:#2a2a2a; --gray:#808080; --light:#e5e5e5; --white:#ffffff; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:var(--dark); color:var(--light); font-family:'Inter',sans-serif; }
+
+    /* NAV */
+    .navbar { position:sticky; top:0; z-index:100; background:rgba(20,20,20,0.97); backdrop-filter:blur(12px); border-bottom:1px solid rgba(229,9,20,0.2); padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:56px; }
+    .navbar-brand { font-size:1.3rem; font-weight:900; color:var(--red); text-decoration:none; }
+    .nav-links { display:flex; gap:0.5rem; list-style:none; }
+    .nav-links a { color:#aaa; text-decoration:none; font-size:0.82rem; padding:0.4rem 0.8rem; border-radius:4px; transition:color .2s,background .2s; }
+    .nav-links a:hover, .nav-links a.active { color:#fff; background:rgba(255,255,255,0.07); }
+    .nav-back { color:var(--red); text-decoration:none; font-size:0.85rem; font-weight:600; }
+    .nav-back:hover { text-decoration:underline; }
+
+    /* HERO PAGE */
+    .page-hero { background:linear-gradient(135deg,#0d0000 0%,#200000 50%,#0d0000 100%); padding:4rem 2rem 3rem; text-align:center; border-bottom:1px solid rgba(229,9,20,0.15); }
+    .page-num { font-size:0.72rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--red); margin-bottom:0.8rem; }
+    .page-icon { font-size:4rem; margin-bottom:1rem; }
+    .page-hero h1 { font-size:clamp(1.8rem,4vw,3rem); font-weight:900; color:#fff; margin-bottom:1rem; }
+    .page-hero p { font-size:1rem; color:#999; max-width:600px; margin:0 auto; line-height:1.7; }
+
+    /* CONTENT */
+    .content { max-width:1100px; margin:0 auto; padding:3rem 2rem; }
+
+    /* INSIGHT BOX */
+    .insight { background:var(--dark2); border-left:4px solid var(--red); border-radius:0 10px 10px 0; padding:1.5rem 1.8rem; margin-bottom:2rem; }
+    .insight-title { font-size:0.75rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--red); margin-bottom:0.6rem; }
+    .insight p { font-size:0.95rem; color:#ccc; line-height:1.75; }
+
+    /* GRAPH WRAPPER */
+    .graph-section { margin-bottom:4rem; }
+    .graph-title { font-size:1.3rem; font-weight:700; color:#fff; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.6rem; }
+    .graph-desc { font-size:0.9rem; color:var(--gray); margin-bottom:1.2rem; line-height:1.65; }
+    .graph-frame { background:var(--dark2); border:1px solid rgba(255,255,255,0.06); border-radius:12px; overflow:hidden; }
+    .graph-frame iframe { display:block; width:100%; border:none; }
+
+    /* STAT CARDS */
+    .stats-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1rem; margin:2rem 0; }
+    .stat-card { background:var(--dark2); border:1px solid rgba(229,9,20,0.15); border-radius:10px; padding:1.5rem; text-align:center; }
+    .stat-val { font-size:2rem; font-weight:900; color:var(--red); }
+    .stat-label { font-size:0.78rem; color:var(--gray); text-transform:uppercase; letter-spacing:1.5px; margin-top:4px; }
+
+    /* CONCLUSION */
+    .conclusion { background:linear-gradient(135deg,rgba(229,9,20,0.08),rgba(229,9,20,0.03)); border:1px solid rgba(229,9,20,0.2); border-radius:12px; padding:2rem; margin-top:3rem; }
+    .conclusion h3 { font-size:1.1rem; font-weight:700; color:#fff; margin-bottom:1rem; }
+    .conclusion ul { list-style:none; display:flex; flex-direction:column; gap:0.7rem; }
+    .conclusion ul li { font-size:0.92rem; color:#ccc; padding-left:1.5rem; position:relative; line-height:1.6; }
+    .conclusion ul li::before { content:'▶'; color:var(--red); font-size:0.6rem; position:absolute; left:0; top:4px; }
+
+    /* PAGINATION */
+    .pagination { display:flex; justify-content:space-between; align-items:center; margin-top:4rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.07); }
+    .pag-btn { display:inline-flex; align-items:center; gap:0.5rem; padding:0.7rem 1.5rem; border-radius:6px; text-decoration:none; font-size:0.88rem; font-weight:600; transition:all .2s; }
+    .pag-prev { background:var(--dark2); color:#aaa; border:1px solid rgba(255,255,255,0.08); }
+    .pag-prev:hover { color:#fff; border-color:rgba(255,255,255,0.2); }
+    .pag-next { background:var(--red); color:#fff; }
+    .pag-next:hover { background:#c40812; transform:translateX(3px); }
+
+    /* DIVIDER */
+    .divider { width:50px; height:3px; background:var(--red); border-radius:2px; margin:1rem 0 2rem; }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="navbar-brand" href="../index.html">NETFLIX</a>
+  <ul class="nav-links">
+    <li><a href="analyse1_apercu.html" class="active">01 Aperçu</a></li>
+    <li><a href="analyse2_geo.html">02 Géo</a></li>
+    <li><a href="analyse3_genres.html">03 Genres</a></li>
+    <li><a href="analyse4_temps.html">04 Temporel</a></li>
+    <li><a href="analyse5_films.html">05 Films/Séries</a></li>
+    <li><a href="analyse6_acteurs.html">06 Acteurs</a></li>
+  </ul>
+  <a class="nav-back" href="../index.html">← Accueil</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-num">Analyse 01 / 06</div>
+  <div class="page-icon">📊</div>
+  <h1>Aperçu Général du Contenu</h1>
+  <p>Composition globale du catalogue Netflix : répartition Films vs Séries, chiffres clés et évolution des ajouts de 2008 à 2021.</p>
+</div>
+
+<div class="content">
+
+  <!-- KPIs -->
+  <div class="stats-row">
+    <div class="stat-card"><div class="stat-val">8 807</div><div class="stat-label">Titres Total</div></div>
+    <div class="stat-card"><div class="stat-val">6 131</div><div class="stat-label">Films</div></div>
+    <div class="stat-card"><div class="stat-val">2 676</div><div class="stat-label">Séries TV</div></div>
+    <div class="stat-card"><div class="stat-val">69,6%</div><div class="stat-label">Part Films</div></div>
+  </div>
+
+  <!-- GRAPHIQUE 1A -->
+  <div class="graph-section">
+    <div class="graph-title">🎬 Films vs Séries — Répartition globale</div>
+    <div class="divider"></div>
+    <div class="graph-desc">
+      Ce graphique double (bar chart + donut) montre la composition du catalogue Netflix. Les <strong style="color:#E50914">films dominent largement</strong> avec près de 70% du catalogue, tandis que les séries représentent 30,4%. Cette répartition révèle la stratégie de Netflix de privilégier les contenus courts (films) pour satisfaire une audience variée.
+    </div>
+    <div class="graph-frame">
+      <iframe src="../../tf_venv/AnalyseP/iframe_figures/figure_5.html" height="450"></iframe>
+    </div>
+    <div class="insight" style="margin-top:1.5rem;">
+      <div class="insight-title">💡 Interprétation</div>
+      <p>Avec <strong>6 131 films</strong> contre <strong>2 676 séries</strong>, Netflix a historiquement misé sur la quantité de films pour élargir son catalogue rapidement. Cependant, la tendance récente montre une montée en puissance des séries originales Netflix, qui génèrent davantage d'engagement et de fidélisation des abonnés.</p>
+    </div>
+  </div>
+
+  <!-- GRAPHIQUE 1B -->
+  <div class="graph-section">
+    <div class="graph-title">📈 Évolution des ajouts au catalogue par année</div>
+    <div class="divider"></div>
+    <div class="graph-desc">
+      Ce graphique en lignes montre l'évolution annuelle des ajouts pour les films et les séries entre 2008 et 2021. On observe une <strong style="color:#E50914">croissance explosive à partir de 2015</strong>, avec un pic en 2019 pour les deux types de contenu, suivi d'une légère baisse en 2020-2021 probablement liée à la pandémie COVID-19.
+    </div>
+    <div class="graph-frame">
+      <iframe src="../../tf_venv/AnalyseP/iframe_figures/figure_7.html" height="440"></iframe>
+    </div>
+    <div class="insight" style="margin-top:1.5rem;">
+      <div class="insight-title">💡 Interprétation</div>
+      <p>La phase d'accélération <strong>2015–2019</strong> correspond à l'expansion internationale de Netflix dans plus de 130 pays. Le ralentissement de 2020 s'explique par les perturbations de production liées au COVID-19, qui ont retardé de nombreuses sorties. La tendance globale reste fortement haussière, témoignant de la stratégie d'investissement massif dans le contenu.</p>
+    </div>
+  </div>
+
+  <!-- CONCLUSION -->
+  <div class="conclusion">
+    <h3>🔑 Points clés de cette analyse</h3>
+    <ul>
+      <li>Netflix propose <strong>8 807 titres</strong> au total, dont une large majorité de films (69,6%) par rapport aux séries (30,4%).</li>
+      <li>La croissance du catalogue a été <strong>exponentielle de 2015 à 2019</strong>, période d'expansion internationale de la plateforme.</li>
+      <li>L'année <strong>2019 représente le pic</strong> d'ajouts de contenu, avec plus de 2 000 nouveaux titres cette année-là.</li>
+      <li>La légère baisse en 2020-2021 est conjoncturelle (COVID) et ne remet pas en question la <strong>trajectoire de croissance</strong> long terme.</li>
+    </ul>
+  </div>
+
+  <!-- PAGINATION -->
+  <div class="pagination">
+    <a class="pag-btn pag-prev" href="../index.html">← Accueil</a>
+    <a class="pag-btn pag-next" href="analyse2_geo.html">Analyse Géographique →</a>
+  </div>
+
+</div>
+</body>
+</html>

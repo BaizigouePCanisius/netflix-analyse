@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Netflix — Analyse Complète du Catalogue</title>
+  <link href="https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@400;700&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --red: #E50914;
+      --dark: #141414;
+      --dark2: #1f1f1f;
+      --dark3: #2a2a2a;
+      --gray: #808080;
+      --light: #e5e5e5;
+      --white: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--dark);
+      color: var(--light);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(
+        135deg,
+        #0a0a0a 0%,
+        #1a0000 40%,
+        #2d0000 60%,
+        #0a0a0a 100%
+      );
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 40%, rgba(229,9,20,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    /* Animated grid lines */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(229,9,20,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(229,9,20,0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: gridMove 20s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes gridMove {
+      0%   { background-position: 0 0; }
+      100% { background-position: 60px 60px; }
+    }
+
+    .hero-content { position: relative; z-index: 2; max-width: 900px; padding: 2rem; }
+
+    .netflix-logo {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--red);
+      letter-spacing: -2px;
+      text-shadow: 0 0 60px rgba(229,9,20,0.5);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(229,9,20,0.15);
+      border: 1px solid rgba(229,9,20,0.4);
+      color: var(--red);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 0.4rem 1.2rem;
+      border-radius: 20px;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 span { color: var(--red); }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: #aaa;
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    /* KPI STRIP */
+    .kpi-strip {
+      display: flex;
+      gap: 2.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .kpi {
+      text-align: center;
+    }
+    .kpi-value {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--red);
+      line-height: 1;
+    }
+    .kpi-label {
+      font-size: 0.75rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-top: 4px;
+    }
+    .kpi-divider {
+      width: 1px;
+      background: rgba(255,255,255,0.1);
+      align-self: stretch;
+    }
+
+    /* CTA Button */
+    .btn-explore {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0.9rem 2.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 30px rgba(229,9,20,0.4);
+      letter-spacing: 0.5px;
+    }
+    .btn-explore:hover {
+      background: #c40812;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 40px rgba(229,9,20,0.6);
+    }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: #555;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+    .scroll-hint::after {
+      content: '▼';
+      font-size: 0.9rem;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(20,20,20,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(229,9,20,0.2);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .navbar-brand {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--red);
+      letter-spacing: -0.5px;
+    }
+    .navbar-links {
+      display: flex;
+      gap: 0.5rem;
+      list-style: none;
+    }
+    .navbar-links a {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .navbar-links a:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.07);
+    }
+
+    /* ── SECTIONS ── */
+    .section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
+
+    .section-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 550px;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+    }
+
+    /* ── ANALYSIS CARDS ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--dark2);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 2rem;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--red);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .card:hover::before { transform: scaleX(1); }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(229,9,20,0.35);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+    .card-num {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .card-desc {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.65;
+      flex: 1;
+    }
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .tag {
+      background: rgba(229,9,20,0.12);
+      border: 1px solid rgba(229,9,20,0.25);
+      color: #e56060;
+      font-size: 0.7rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+    .card-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--red);
+      margin-top: 0.5rem;
+    }
+    .card-cta::after { content: '→'; transition: transform 0.2s; }
+    .card:hover .card-cta::after { transform: translateX(5px); }
+
+    /* ── SYNTHESE BAND ── */
+    .synthese-band {
+      background: linear-gradient(135deg, #1a0000 0%, #2d0505 50%, #1a0000 100%);
+      border-top: 1px solid rgba(229,9,20,0.2);
+      border-bottom: 1px solid rgba(229,9,20,0.2);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .synth-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 3rem auto 0;
+    }
+    .synth-item {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(229,9,20,0.15);
+      border-radius: 10px;
+      padding: 1.5rem 1rem;
+    }
+    .synth-val {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--red);
+      margin-bottom: 0.3rem;
+    }
+    .synth-label {
+      font-size: 0.78rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0a0a0a;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    footer .f-logo { font-size: 1.5rem; font-weight: 900; color: var(--red); margin-bottom: 0.5rem; }
+    footer p { font-size: 0.8rem; color: #555; }
+    footer p span { color: #888; }
+
+    /* ── SEPARATEUR ── */
+    .divider {
+      width: 60px; height: 4px;
+      background: var(--red);
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════ NAVBAR ════════════════════ -->
+<nav class="navbar">
+  <div class="navbar-brand">NETFLIX</div>
+  <ul class="navbar-links">
+    <li><a href="#analyses">Analyses</a></li>
+    <li><a href="#synthese">Synthèse</a></li>
+    <li><a href="pages/analyse1_apercu.html">Aperçu</a></li>
+    <li><a href="pages/analyse2_geo.html">Géo</a></li>
+    <li><a href="pages/analyse3_genres.html">Genres</a></li>
+    <li><a href="pages/analyse4_temps.html">Temporel</a></li>
+    <li><a href="pages/analyse5_films.html">Films/Séries</a></li>
+    <li><a href="pages/analyse6_acteurs.html">Acteurs</a></li>
+  </ul>
+</nav>
+
+<!-- ════════════════════ HERO ════════════════════ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="netflix-logo">ERIC SHALY-NETFLIX</div>
+    <div class="hero-badge">📊 Rapport d'Analyse — Données Catalogue</div>
+    <h1>Analyse Complète du<br/><span>Catalogue Netflix</span><br/><span>Par BAIZIGUEOU PIERRE CANISIUS</span><br/><span>Email:canisiusbai45@gmail.com</span></h1>
+    <p>Une exploration approfondie de 8 807 titres selon 6 axes analytiques : géographie, genres, tendances temporelles, acteurs et réalisateurs.</p>
+
+    <div class="kpi-strip">
+      <div class="kpi"><div class="kpi-value">8 807</div><div class="kpi-label">Titres analysés</div></div>
+      <div class="kpi-divider"></div>
+      <div class="kpi"><div class="kpi-value">69,6%</div><div class="kpi-label">Films</div></div>
+      <div class="kpi-divider"></div>
+      <div class="kpi"><div class="kpi-value">86</div><div class="kpi-label">Pays</div></div>
+      <div class="kpi-divider"></div>
+      <div class="kpi"><div class="kpi-value">20</div><div class="kpi-label">Graphiques</div></div>
+      <div class="kpi-divider"></div>
+      <div class="kpi"><div class="kpi-value">6</div><div class="kpi-label">Axes d'analyse</div></div>
+    </div>
+
+    <a href="#analyses" class="btn-explore">▶ Explorer les Analyses</a>
+  </div>
+  <div class="scroll-hint">Défiler</div>
+</section>
+
+<!-- ════════════════════ CARDS ANALYSES ════════════════════ -->
+<div id="analyses">
+  <div class="section">
+    <div class="section-tag">Nos Analyses</div>
+    <div class="divider"></div>
+    <h2 class="section-title">6 Axes d'Analyse Détaillés</h2>
+    <p class="section-sub">Chaque section explore une dimension du catalogue Netflix avec des graphiques interactifs et des commentaires experts.</p>
+
+    <div class="cards-grid">
+
+      <a class="card" href="pages/analyse1_apercu.html">
+        <div class="card-icon">📊</div>
+        <div class="card-num">Analyse 01</div>
+        <div class="card-title">Aperçu Général du Contenu</div>
+        <div class="card-desc">Répartition Films vs Séries, chiffres clés du catalogue et évolution des ajouts depuis 2008. Une vue d'ensemble indispensable.</div>
+        <div class="card-tags">
+          <span class="tag">Bar Chart</span>
+          <span class="tag">Pie Chart</span>
+          <span class="tag">Line Chart</span>
+        </div>
+        <div class="card-cta">Voir l'analyse</div>
+      </a>
+
+      <a class="card" href="pages/analyse2_geo.html">
+        <div class="card-icon">🌍</div>
+        <div class="card-num">Analyse 02</div>
+        <div class="card-title">Analyse Géographique</div>
+        <div class="card-desc">Cartographie mondiale de la production Netflix. Quels pays dominent ? Quelle est la répartition Films/Séries par région ?</div>
+        <div class="card-tags">
+          <span class="tag">Carte Mondiale</span>
+          <span class="tag">Top 15 Pays</span>
+          <span class="tag">Bar Groupé</span>
+        </div>
+        <div class="card-cta">Voir l'analyse</div>
+      </a>
+
+      <a class="card" href="pages/analyse3_genres.html">
+        <div class="card-icon">🎭</div>
+        <div class="card-num">Analyse 03</div>
+        <div class="card-title">Analyse des Genres</div>
+        <div class="card-desc">Top 20 genres, combinaisons les plus populaires et répartition Films/Séries par genre. Comprendre les tendances de contenu.</div>
+        <div class="card-tags">
+          <span class="tag">Top 20</span>
+          <span class="tag">Stacked Bar</span>
+          <span class="tag">Treemap</span>
+        </div>
+        <div class="card-cta">Voir l'analyse</div>
+      </a>
+
+      <a class="card" href="pages/analyse4_temps.html">
+        <div class="card-icon">📅</div>
+        <div class="card-num">Analyse 04</div>
+        <div class="card-title">Analyse Temporelle</div>
+        <div class="card-desc">Croissance du catalogue 2008–2021, mois de pic d'ajout et heatmap des tendances saisonnières. L'histoire de Netflix en chiffres.</div>
+        <div class="card-tags">
+          <span class="tag">Area Chart</span>
+          <span class="tag">Heatmap</span>
+          <span class="tag">Cumulatif</span>
+        </div>
+        <div class="card-cta">Voir l'analyse</div>
+      </a>
+
+      <a class="card" href="pages/analyse5_films.html">
+        <div class="card-icon">🎬</div>
+        <div class="card-num">Analyse 05</div>
+        <div class="card-title">Films vs Séries en Détail</div>
+        <div class="card-desc">Durée moyenne des films (~100 min), distribution du nombre de saisons et comparaison des durées par pays producteur.</div>
+        <div class="card-tags">
+          <span class="tag">Boxplot</span>
+          <span class="tag">Histogramme</span>
+          <span class="tag">Violin Plot</span>
+        </div>
+        <div class="card-cta">Voir l'analyse</div>
+      </a>
+
+      <a class="card" href="pages/analyse6_acteurs.html">
+        <div class="card-icon">🌟</div>
+        <div class="card-num">Analyse 06</div>
+        <div class="card-title">Acteurs &amp; Réalisateurs</div>
+        <div class="card-desc">Top 15 réalisateurs et acteurs, graphique sunburst des collaborations et réseau visuel réalisateur–acteur interactif.</div>
+        <div class="card-tags">
+          <span class="tag">Sunburst</span>
+          <span class="tag">Network Graph</span>
+          <span class="tag">Top 15</span>
+        </div>
+        <div class="card-cta">Voir l'analyse</div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════ SYNTHESE ════════════════════ -->
+<div id="synthese" class="synthese-band">
+  <div class="section-tag" style="color:var(--red);font-size:0.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;">Résultats Clés</div>
+  <h2 style="font-size:2.2rem;font-weight:900;color:#fff;margin-top:0.8rem;">Synthèse des Résultats</h2>
+  <p style="color:#888;margin-top:0.8rem;">Les indicateurs essentiels de cette analyse complète du catalogue Netflix</p>
+  <div class="synth-grid">
+    <div class="synth-item"><div class="synth-val">8 807</div><div class="synth-label">Titres Total</div></div>
+    <div class="synth-item"><div class="synth-val">6 131</div><div class="synth-label">Films (69.6%)</div></div>
+    <div class="synth-item"><div class="synth-val">2 676</div><div class="synth-label">Séries (30.4%)</div></div>
+    <div class="synth-item"><div class="synth-val">3 211</div><div class="synth-label">Titres USA (N°1)</div></div>
+    <div class="synth-item"><div class="synth-val">~100 min</div><div class="synth-label">Durée moy. film</div></div>
+    <div class="synth-item"><div class="synth-val">1,8</div><div class="synth-label">Saisons moy. série</div></div>
+    <div class="synth-item"><div class="synth-val">4 528</div><div class="synth-label">Réalisateurs uniques</div></div>
+    <div class="synth-item"><div class="synth-val">2019</div><div class="synth-label">Pic d'ajout (année)</div></div>
+  </div>
+</div>
+
+<!-- ════════════════════ FOOTER ════════════════════ -->
+<footer>
+  <div class="f-logo">NETFLIX</div>
+  <p>Rapport d'analyse du catalogue Netflix — Dataset : <span>netflix_titles.csv</span></p>
+  <p style="margin-top:0.5rem;">Outils : <span>Python · Pandas · Plotly</span> &nbsp;|&nbsp; Généré le <span>Mars 2026</span></p>
+</footer>
+
+</body>
+</html>

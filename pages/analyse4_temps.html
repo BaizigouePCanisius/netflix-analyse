@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Analyse 4 — Temporelle | Netflix</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root { --red:#E50914; --dark:#141414; --dark2:#1f1f1f; --dark3:#2a2a2a; --gray:#808080; --light:#e5e5e5; --white:#ffffff; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:var(--dark); color:var(--light); font-family:'Inter',sans-serif; }
+    .navbar { position:sticky; top:0; z-index:100; background:rgba(20,20,20,0.97); backdrop-filter:blur(12px); border-bottom:1px solid rgba(229,9,20,0.2); padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:56px; }
+    .navbar-brand { font-size:1.3rem; font-weight:900; color:var(--red); text-decoration:none; }
+    .nav-links { display:flex; gap:0.5rem; list-style:none; }
+    .nav-links a { color:#aaa; text-decoration:none; font-size:0.82rem; padding:0.4rem 0.8rem; border-radius:4px; transition:color .2s,background .2s; }
+    .nav-links a:hover, .nav-links a.active { color:#fff; background:rgba(255,255,255,0.07); }
+    .nav-back { color:var(--red); text-decoration:none; font-size:0.85rem; font-weight:600; }
+    .page-hero { background:linear-gradient(135deg,#001a0d 0%,#002d1a 50%,#001a0d 100%); padding:4rem 2rem 3rem; text-align:center; border-bottom:1px solid rgba(229,9,20,0.15); }
+    .page-num { font-size:0.72rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--red); margin-bottom:0.8rem; }
+    .page-icon { font-size:4rem; margin-bottom:1rem; }
+    .page-hero h1 { font-size:clamp(1.8rem,4vw,3rem); font-weight:900; color:#fff; margin-bottom:1rem; }
+    .page-hero p { font-size:1rem; color:#999; max-width:600px; margin:0 auto; line-height:1.7; }
+    .content { max-width:1100px; margin:0 auto; padding:3rem 2rem; }
+    .insight { background:var(--dark2); border-left:4px solid var(--red); border-radius:0 10px 10px 0; padding:1.5rem 1.8rem; margin-bottom:2rem; }
+    .insight-title { font-size:0.75rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--red); margin-bottom:0.6rem; }
+    .insight p { font-size:0.95rem; color:#ccc; line-height:1.75; }
+    .graph-section { margin-bottom:4rem; }
+    .graph-title { font-size:1.3rem; font-weight:700; color:#fff; margin-bottom:0.5rem; }
+    .graph-desc { font-size:0.9rem; color:var(--gray); margin-bottom:1.2rem; line-height:1.65; }
+    .graph-frame { background:var(--dark2); border:1px solid rgba(255,255,255,0.06); border-radius:12px; overflow:hidden; }
+    .graph-frame iframe { display:block; width:100%; border:none; }
+    .stats-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1rem; margin:2rem 0; }
+    .stat-card { background:var(--dark2); border:1px solid rgba(229,9,20,0.15); border-radius:10px; padding:1.5rem; text-align:center; }
+    .stat-val { font-size:2rem; font-weight:900; color:var(--red); }
+    .stat-label { font-size:0.78rem; color:var(--gray); text-transform:uppercase; letter-spacing:1.5px; margin-top:4px; }
+    .conclusion { background:linear-gradient(135deg,rgba(229,9,20,0.08),rgba(229,9,20,0.03)); border:1px solid rgba(229,9,20,0.2); border-radius:12px; padding:2rem; margin-top:3rem; }
+    .conclusion h3 { font-size:1.1rem; font-weight:700; color:#fff; margin-bottom:1rem; }
+    .conclusion ul { list-style:none; display:flex; flex-direction:column; gap:0.7rem; }
+    .conclusion ul li { font-size:0.92rem; color:#ccc; padding-left:1.5rem; position:relative; line-height:1.6; }
+    .conclusion ul li::before { content:'▶'; color:var(--red); font-size:0.6rem; position:absolute; left:0; top:4px; }
+    .pagination { display:flex; justify-content:space-between; align-items:center; margin-top:4rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.07); }
+    .pag-btn { display:inline-flex; align-items:center; gap:0.5rem; padding:0.7rem 1.5rem; border-radius:6px; text-decoration:none; font-size:0.88rem; font-weight:600; transition:all .2s; }
+    .pag-prev { background:var(--dark2); color:#aaa; border:1px solid rgba(255,255,255,0.08); }
+    .pag-next { background:var(--red); color:#fff; }
+    .pag-next:hover { background:#c40812; }
+    .divider { width:50px; height:3px; background:var(--red); border-radius:2px; margin:1rem 0 2rem; }
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="../index.html">NETFLIX</a>
+  <ul class="nav-links">
+    <li><a href="analyse1_apercu.html">01 Aperçu</a></li>
+    <li><a href="analyse2_geo.html">02 Géo</a></li>
+    <li><a href="analyse3_genres.html">03 Genres</a></li>
+    <li><a href="analyse4_temps.html" class="active">04 Temporel</a></li>
+    <li><a href="analyse5_films.html">05 Films/Séries</a></li>
+    <li><a href="analyse6_acteurs.html">06 Acteurs</a></li>
+  </ul>
+  <a class="nav-back" href="../index.html">← Accueil</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-num">Analyse 04 / 06</div>
+  <div class="page-icon">📅</div>
+  <h1>Analyse Temporelle</h1>
+  <p>Évolution du catalogue Netflix de 2008 à 2021 : croissance annuelle, catalogue cumulatif et tendances saisonnières d'ajout de contenu.</p>
+</div>
+
+<div class="content">
+  <div class="stats-row">
+    <div class="stat-card"><div class="stat-val">2019</div><div class="stat-label">Année record d'ajouts</div></div>
+    <div class="stat-card"><div class="stat-val">2008</div><div class="stat-label">1ère entrée dataset</div></div>
+    <div class="stat-card"><div class="stat-val">Juillet</div><div class="stat-label">Mois le + actif</div></div>
+    <div class="stat-card"><div class="stat-val">×40</div><div class="stat-label">Croissance 2012→2019</div></div>
+  </div>
+
+  <div class="graph-section">
+    <div class="graph-title">📅 Croissance du catalogue Netflix (2008–2021)</div>
+    <div class="divider"></div>
+    <div class="graph-desc">Ce double graphique montre en haut les nouveaux titres ajoutés chaque année (bar chart) et en bas la taille cumulative du catalogue (area chart). On observe une <strong style="color:#E50914">accélération spectaculaire à partir de 2015</strong> correspondant à l'expansion internationale de Netflix.</div>
+    <div class="graph-frame">
+      <iframe src="../../tf_venv/AnalyseP/iframe_figures/figure_16.html" height="620"></iframe>
+    </div>
+    <div class="insight" style="margin-top:1.5rem;">
+      <div class="insight-title">💡 Interprétation</div>
+      <p>La courbe cumulative montre que Netflix a atteint sa masse critique de contenu autour de <strong>2017–2018</strong>. Le pic de 2019 (plus de 2 000 ajouts) correspond à la période d'investissement massif avant l'arrivée de concurrents (Disney+, Apple TV+). La légère baisse en 2020 est liée à la <strong>pandémie COVID-19</strong> qui a bloqué de nombreuses productions.</p>
+    </div>
+  </div>
+
+  <div class="graph-section">
+    <div class="graph-title">🗓️ Heatmap — Ajouts mensuels par année (2010–2021)</div>
+    <div class="divider"></div>
+    <div class="graph-desc">Cette heatmap révèle les <strong style="color:#E50914">patterns saisonniers</strong> d'ajout de contenu. Chaque cellule indique le nombre de titres ajoutés pour un mois et une année donnés. Les cellules rouges foncées indiquent les pics d'activité.</div>
+    <div class="graph-frame">
+      <iframe src="../../tf_venv/AnalyseP/iframe_figures/figure_17.html" height="470"></iframe>
+    </div>
+    <div class="insight" style="margin-top:1.5rem;">
+      <div class="insight-title">💡 Interprétation</div>
+      <p>La heatmap révèle que <strong>Juillet et Décembre</strong> sont les mois de pic d'ajouts, correspondant aux périodes de vacances estivales et de fin d'année. Cette saisonnalité est une stratégie délibérée : Netflix maximise ses ajouts quand les abonnés ont le plus de temps libre. Les mois de <strong>Février–Mars</strong> sont historiquement plus calmes.</p>
+    </div>
+  </div>
+
+  <div class="conclusion">
+    <h3>🔑 Points clés de cette analyse</h3>
+    <ul>
+      <li><strong>2019 est l'année record</strong> avec le plus grand nombre de titres ajoutés, juste avant l'émergence de la concurrence (Disney+, Apple TV+).</li>
+      <li>La croissance du catalogue a été <strong>multipliée par 40</strong> entre 2012 et 2019, reflétant l'expansion mondiale de Netflix.</li>
+      <li><strong>Juillet est le mois le plus actif</strong> en termes d'ajouts, stratégie alignée avec les vacances estivales des abonnés.</li>
+      <li>La <strong>pandémie COVID-19</strong> a eu un impact visible en 2020, ralentissant les productions et donc les ajouts au catalogue.</li>
+    </ul>
+  </div>
+
+  <div class="pagination">
+    <a class="pag-btn pag-prev" href="analyse3_genres.html">← Analyse des Genres</a>
+    <a class="pag-btn pag-next" href="analyse5_films.html">Films vs Séries →</a>
+  </div>
+</div>
+</body>
+</html>

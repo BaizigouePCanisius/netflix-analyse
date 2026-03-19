@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Analyse 6 — Acteurs & Réalisateurs | Netflix</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root { --red:#E50914; --dark:#141414; --dark2:#1f1f1f; --gray:#808080; --light:#e5e5e5; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:var(--dark); color:var(--light); font-family:'Inter',sans-serif; }
+    .navbar { position:sticky; top:0; z-index:100; background:rgba(20,20,20,0.97); backdrop-filter:blur(12px); border-bottom:1px solid rgba(229,9,20,0.2); padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:56px; }
+    .navbar-brand { font-size:1.3rem; font-weight:900; color:var(--red); text-decoration:none; }
+    .nav-links { display:flex; gap:0.5rem; list-style:none; }
+    .nav-links a { color:#aaa; text-decoration:none; font-size:0.82rem; padding:0.4rem 0.8rem; border-radius:4px; transition:color .2s,background .2s; }
+    .nav-links a:hover, .nav-links a.active { color:#fff; background:rgba(255,255,255,0.07); }
+    .nav-back { color:var(--red); text-decoration:none; font-size:0.85rem; font-weight:600; }
+    .page-hero { background:linear-gradient(135deg,#0a001a 0%,#180030 50%,#0a001a 100%); padding:4rem 2rem 3rem; text-align:center; border-bottom:1px solid rgba(229,9,20,0.15); }
+    .page-num { font-size:0.72rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--red); margin-bottom:0.8rem; }
+    .page-icon { font-size:4rem; margin-bottom:1rem; }
+    .page-hero h1 { font-size:clamp(1.8rem,4vw,3rem); font-weight:900; color:#fff; margin-bottom:1rem; }
+    .page-hero p { font-size:1rem; color:#999; max-width:600px; margin:0 auto; line-height:1.7; }
+    .content { max-width:1100px; margin:0 auto; padding:3rem 2rem; }
+    .insight { background:var(--dark2); border-left:4px solid var(--red); border-radius:0 10px 10px 0; padding:1.5rem 1.8rem; margin-bottom:2rem; }
+    .insight-title { font-size:0.75rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--red); margin-bottom:0.6rem; }
+    .insight p { font-size:0.95rem; color:#ccc; line-height:1.75; }
+    .graph-section { margin-bottom:4rem; }
+    .graph-title { font-size:1.3rem; font-weight:700; color:#fff; margin-bottom:0.5rem; }
+    .graph-desc { font-size:0.9rem; color:var(--gray); margin-bottom:1.2rem; line-height:1.65; }
+    .graph-frame { background:var(--dark2); border:1px solid rgba(255,255,255,0.06); border-radius:12px; overflow:hidden; }
+    .graph-frame iframe { display:block; width:100%; border:none; }
+    .stats-row { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1rem; margin:2rem 0; }
+    .stat-card { background:var(--dark2); border:1px solid rgba(229,9,20,0.15); border-radius:10px; padding:1.5rem; text-align:center; }
+    .stat-val { font-size:1.8rem; font-weight:900; color:var(--red); }
+    .stat-label { font-size:0.75rem; color:var(--gray); text-transform:uppercase; letter-spacing:1.5px; margin-top:4px; }
+    .conclusion { background:linear-gradient(135deg,rgba(229,9,20,0.08),rgba(229,9,20,0.03)); border:1px solid rgba(229,9,20,0.2); border-radius:12px; padding:2rem; margin-top:3rem; }
+    .conclusion h3 { font-size:1.1rem; font-weight:700; color:#fff; margin-bottom:1rem; }
+    .conclusion ul { list-style:none; display:flex; flex-direction:column; gap:0.7rem; }
+    .conclusion ul li { font-size:0.92rem; color:#ccc; padding-left:1.5rem; position:relative; line-height:1.6; }
+    .conclusion ul li::before { content:'▶'; color:var(--red); font-size:0.6rem; position:absolute; left:0; top:4px; }
+    .final-band { background:linear-gradient(135deg,#1a0000,#2d0505,#1a0000); border-top:1px solid rgba(229,9,20,0.2); border-bottom:1px solid rgba(229,9,20,0.2); padding:3rem 2rem; text-align:center; margin-top:4rem; }
+    .final-band h2 { font-size:1.8rem; font-weight:900; color:#fff; margin-bottom:0.8rem; }
+    .final-band p { color:#888; max-width:500px; margin:0 auto 2rem; line-height:1.7; }
+    .btn-home { display:inline-block; background:var(--red); color:#fff; font-weight:700; padding:0.9rem 2.5rem; border-radius:6px; text-decoration:none; transition:background .2s; }
+    .btn-home:hover { background:#c40812; }
+    .pagination { display:flex; justify-content:space-between; align-items:center; margin-top:4rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.07); }
+    .pag-btn { display:inline-flex; align-items:center; gap:0.5rem; padding:0.7rem 1.5rem; border-radius:6px; text-decoration:none; font-size:0.88rem; font-weight:600; transition:all .2s; }
+    .pag-prev { background:var(--dark2); color:#aaa; border:1px solid rgba(255,255,255,0.08); }
+    .pag-next { background:var(--red); color:#fff; }
+    .pag-next:hover { background:#c40812; }
+    .divider { width:50px; height:3px; background:var(--red); border-radius:2px; margin:1rem 0 2rem; }
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <a class="navbar-brand" href="../index.html">NETFLIX</a>
+  <ul class="nav-links">
+    <li><a href="analyse1_apercu.html">01 Aperçu</a></li>
+    <li><a href="analyse2_geo.html">02 Géo</a></li>
+    <li><a href="analyse3_genres.html">03 Genres</a></li>
+    <li><a href="analyse4_temps.html">04 Temporel</a></li>
+    <li><a href="analyse5_films.html">05 Films/Séries</a></li>
+    <li><a href="analyse6_acteurs.html" class="active">06 Acteurs</a></li>
+  </ul>
+  <a class="nav-back" href="../index.html">← Accueil</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-num">Analyse 06 / 06</div>
+  <div class="page-icon">🌟</div>
+  <h1>Acteurs &amp; Réalisateurs</h1>
+  <p>Identification des talents les plus présents sur Netflix : top réalisateurs, top acteurs, et cartographie de leurs collaborations.</p>
+</div>
+
+<div class="content">
+  <div class="stats-row">
+    <div class="stat-card"><div class="stat-val">4 528</div><div class="stat-label">Réalisateurs uniques</div></div>
+    <div class="stat-card"><div class="stat-val">Rajiv Chilaka</div><div class="stat-label">Réalisateur N°1 (22 titres)</div></div>
+    <div class="stat-card"><div class="stat-val">29,9%</div><div class="stat-label">Titres sans réalisateur</div></div>
+    <div class="stat-card"><div class="stat-val">9,4%</div><div class="stat-label">Titres sans casting</div></div>
+  </div>
+
+  <div class="graph-section">
+    <div class="graph-title">🎬 Top 15 Réalisateurs les plus présents</div>
+    <div class="divider"></div>
+    <div class="graph-desc">Ce bar chart horizontal identifie les réalisateurs ayant le plus de titres dans le catalogue Netflix. <strong style="color:#E50914">Rajiv Chilaka domine</strong> avec 22 titres, suivi de réalisateurs principalement issus du cinéma indien et international, révélant la diversité des talents sur la plateforme.</div>
+    <div class="graph-frame">
+      <iframe src="../../tf_venv/AnalyseP/iframe_figures/figure_21.html" height="520"></iframe>
+    </div>
+    <div class="insight" style="margin-top:1.5rem;">
+      <div class="insight-title">💡 Interprétation</div>
+      <p><strong>Rajiv Chilaka</strong>, réalisateur indien spécialisé en animation (Chhota Bheem), domine le classement grâce au volume de ses productions. La présence majoritaire de réalisateurs indiens dans ce top reflète la <strong>forte productivité de Bollywood</strong> et du cinéma indien sur Netflix. Les réalisateurs occidentaux ont moins de films mais souvent de plus gros budgets.</p>
+    </div>
+  </div>
+
+  <div class="graph-section">
+    <div class="graph-title">🌟 Top 15 Acteurs les plus présents</div>
+    <div class="divider"></div>
+    <div class="graph-desc">Ce graphique identifie les acteurs ayant le plus d'apparitions dans le catalogue Netflix. Le nombre d'apparitions compte chaque titre dans lequel l'acteur est listé. Les acteurs les plus fréquents révèlent les <strong style="color:#E50914">marchés géographiques prioritaires</strong> de Netflix.</div>
+    <div class="graph-frame">
+      <iframe src="../../tf_venv/AnalyseP/iframe_figures/figure_22.html" height="520"></iframe>
+    </div>
+    <div class="insight" style="margin-top:1.5rem;">
+      <div class="insight-title">💡 Interprétation</div>
+      <p>Le top des acteurs est dominé par des stars du cinéma <strong>indien et japonais</strong>, ce qui confirme les volumes importants de contenu provenant de ces pays. Cette analyse peut aider Netflix à identifier ses <strong>partenaires talent clés</strong> par marché géographique et à orienter ses investissements dans des contrats d'exclusivité avec les acteurs les plus populaires localement.</p>
+    </div>
+  </div>
+
+  <div class="graph-section">
+    <div class="graph-title">☀️ Top 10 Réalisateurs — Type &amp; Pays (Sunburst)</div>
+    <div class="divider"></div>
+    <div class="graph-desc">Le graphique sunburst décompose hiérarchiquement chaque réalisateur du top 10 par type de contenu (Film/Série) puis par pays. Chaque anneau représente un niveau de hiérarchie. Ce graphique est <strong style="color:#E50914">interactif</strong> : cliquez sur un segment pour zoomer.</div>
+    <div class="graph-frame">
+      <iframe src="../../tf_venv/AnalyseP/iframe_figures/figure_23.html" height="600"></iframe>
+    </div>
+    <div class="insight" style="margin-top:1.5rem;">
+      <div class="insight-title">💡 Interprétation</div>
+      <p>Le sunburst révèle que la plupart des top réalisateurs sont <strong>spécialisés dans un seul pays et un seul type</strong> de contenu. Très peu diversifient entre films et séries. Cette spécialisation est typique de l'industrie : les réalisateurs de cinéma restent dans leur format de prédilection et leur marché local.</p>
+    </div>
+  </div>
+
+  <div class="graph-section">
+    <div class="graph-title">🕸️ Réseau de collaborations — Top 6 réalisateurs &amp; leurs acteurs</div>
+    <div class="divider"></div>
+    <div class="graph-desc">Ce network graph visualise les collaborations entre les 6 réalisateurs les plus prolifiques (carrés rouges) et leurs acteurs récurrents (cercles gris). Plus deux nœuds sont reliés, plus ils ont collaboré. Ce graphique révèle les <strong style="color:#E50914">écosystèmes créatifs</strong> de Netflix.</div>
+    <div class="graph-frame">
+      <iframe src="../../tf_venv/AnalyseP/iframe_figures/figure_24.html" height="640"></iframe>
+    </div>
+    <div class="insight" style="margin-top:1.5rem;">
+      <div class="insight-title">💡 Interprétation</div>
+      <p>Le réseau montre des <strong>clusters distincts</strong> : chaque réalisateur a son propre groupe d'acteurs fidèles. Peu d'acteurs apparaissent chez plusieurs réalisateurs du top 6, indiquant une fidélité créative forte. Ces collaborations récurrentes sont un signe de <strong>confiance artistique</strong> et peuvent guider Netflix dans ses décisions de casting pour de nouvelles productions.</p>
+    </div>
+  </div>
+
+  <div class="conclusion">
+    <h3>🔑 Points clés de cette analyse</h3>
+    <ul>
+      <li><strong>Rajiv Chilaka</strong> est le réalisateur le plus prolifique avec 22 titres, principalement des animations indiennes.</li>
+      <li>Le top 15 des réalisateurs et acteurs est dominé par des talents <strong>indiens et japonais</strong>, reflet des volumes de contenu asiatique.</li>
+      <li>Les réalisateurs sont très <strong>spécialisés</strong> par type (film/série) et par pays — peu diversifient leur portfolio sur Netflix.</li>
+      <li>Le réseau de collaborations révèle des <strong>écosystèmes créatifs stables</strong>, chaque réalisateur travaillant avec un noyau d'acteurs fidèles.</li>
+    </ul>
+  </div>
+
+  <div class="pagination">
+    <a class="pag-btn pag-prev" href="analyse5_films.html">← Films vs Séries</a>
+    <a class="pag-btn pag-next" href="../index.html">Retour à l'accueil →</a>
+  </div>
+</div>
+
+<!-- FINAL BAND -->
+<div class="final-band">
+  <h2>✅ Analyse Complète</h2>
+  <p>Vous avez parcouru les 6 axes d'analyse du catalogue Netflix. Retrouvez la synthèse complète sur la page d'accueil.</p>
+  <a class="btn-home" href="../index.html">← Retour à l'accueil</a>
+</div>
+
+</body>
+</html>
