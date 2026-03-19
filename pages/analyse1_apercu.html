@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Analyse 1 — Aperçu Général | Netflix</title>
+  <title>Analyse 1 â€” AperÃ§u GÃ©nÃ©ral | Netflix</title>
   <style>
     :root { --red:#E50914; --dark:#141414; --dark2:#1f1f1f; --dark3:#2a2a2a; --gray:#808080; --light:#e5e5e5; --white:#ffffff; }
     * { margin:0; padding:0; box-sizing:border-box; }
@@ -51,7 +51,7 @@
     .conclusion h3 { font-size:1.1rem; font-weight:700; color:#fff; margin-bottom:1rem; }
     .conclusion ul { list-style:none; display:flex; flex-direction:column; gap:0.7rem; }
     .conclusion ul li { font-size:0.92rem; color:#ccc; padding-left:1.5rem; position:relative; line-height:1.6; }
-    .conclusion ul li::before { content:'▶'; color:var(--red); font-size:0.6rem; position:absolute; left:0; top:4px; }
+    .conclusion ul li::before { content:'â–¶'; color:var(--red); font-size:0.6rem; position:absolute; left:0; top:4px; }
 
     /* PAGINATION */
     .pagination { display:flex; justify-content:space-between; align-items:center; margin-top:4rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.07); }
@@ -63,29 +63,55 @@
 
     /* DIVIDER */
     .divider { width:50px; height:3px; background:var(--red); border-radius:2px; margin:1rem 0 2rem; }
+
+    /* ── RESPONSIVE MOBILE ── */
+    @media (max-width: 768px) {
+      .navbar { padding: 0 1rem; flex-wrap: wrap; height: auto; min-height: 56px; gap: 0.3rem; padding-top: 0.5rem; padding-bottom: 0.5rem; }
+      .nav-links { display: none; }
+      .navbar-brand { font-size: 1.1rem; }
+      .page-hero { padding: 2.5rem 1rem 2rem; }
+      .page-icon { font-size: 2.5rem; }
+      .page-hero h1 { font-size: 1.6rem; }
+      .page-hero p { font-size: 0.9rem; }
+      .content { padding: 2rem 1rem; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+      .stat-val { font-size: 1.5rem; }
+      .graph-frame iframe { height: 320px !important; }
+      .graph-title { font-size: 1.1rem; }
+      .graph-desc { font-size: 0.85rem; }
+      .insight { padding: 1rem 1.2rem; }
+      .insight p { font-size: 0.88rem; }
+      .conclusion { padding: 1.5rem; }
+      .conclusion ul li { font-size: 0.88rem; }
+      .pagination { flex-direction: column; gap: 1rem; }
+      .pag-btn { width: 100%; justify-content: center; }
+    }
+    @media (max-width: 480px) {
+      .stats-row { grid-template-columns: 1fr 1fr; }
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
 </head>
 <body>
 
 <nav class="navbar">
-  <a class="navbar-brand" href="../index.html">NETFLIX</a>
+  <a class="navbar-brand" href="index.html">NETFLIX</a>
   <ul class="nav-links">
-    <li><a href="analyse1_apercu.html" class="active">01 Aperçu</a></li>
-    <li><a href="analyse2_geo.html">02 Géo</a></li>
+    <li><a href="analyse1_apercu.html" class="active">01 AperÃ§u</a></li>
+    <li><a href="analyse2_geo.html">02 GÃ©o</a></li>
     <li><a href="analyse3_genres.html">03 Genres</a></li>
     <li><a href="analyse4_temps.html">04 Temporel</a></li>
-    <li><a href="analyse5_films.html">05 Films/Séries</a></li>
+    <li><a href="analyse5_films.html">05 Films/SÃ©ries</a></li>
     <li><a href="analyse6_acteurs.html">06 Acteurs</a></li>
   </ul>
-  <a class="nav-back" href="../index.html">← Accueil</a>
+  <a class="nav-back" href="index.html">← Accueil</a>
 </nav>
 
 <div class="page-hero">
   <div class="page-num">Analyse 01 / 06</div>
-  <div class="page-icon">📊</div>
-  <h1>Aperçu Général du Contenu</h1>
-  <p>Composition globale du catalogue Netflix : répartition Films vs Séries, chiffres clés et évolution des ajouts de 2008 à 2021.</p>
+  <div class="page-icon">ðŸ“Š</div>
+  <h1>AperÃ§u GÃ©nÃ©ral du Contenu</h1>
+  <p>Composition globale du catalogue Netflix : rÃ©partition Films vs SÃ©ries, chiffres clÃ©s et Ã©volution des ajouts de 2008 Ã  2021.</p>
 </div>
 
 <div class="content">
@@ -94,59 +120,60 @@
   <div class="stats-row">
     <div class="stat-card"><div class="stat-val">8 807</div><div class="stat-label">Titres Total</div></div>
     <div class="stat-card"><div class="stat-val">6 131</div><div class="stat-label">Films</div></div>
-    <div class="stat-card"><div class="stat-val">2 676</div><div class="stat-label">Séries TV</div></div>
+    <div class="stat-card"><div class="stat-val">2 676</div><div class="stat-label">SÃ©ries TV</div></div>
     <div class="stat-card"><div class="stat-val">69,6%</div><div class="stat-label">Part Films</div></div>
   </div>
 
   <!-- GRAPHIQUE 1A -->
   <div class="graph-section">
-    <div class="graph-title">🎬 Films vs Séries — Répartition globale</div>
+    <div class="graph-title">ðŸŽ¬ Films vs SÃ©ries â€” RÃ©partition globale</div>
     <div class="divider"></div>
     <div class="graph-desc">
-      Ce graphique double (bar chart + donut) montre la composition du catalogue Netflix. Les <strong style="color:#E50914">films dominent largement</strong> avec près de 70% du catalogue, tandis que les séries représentent 30,4%. Cette répartition révèle la stratégie de Netflix de privilégier les contenus courts (films) pour satisfaire une audience variée.
+      Ce graphique double (bar chart + donut) montre la composition du catalogue Netflix. Les <strong style="color:#E50914">films dominent largement</strong> avec prÃ¨s de 70% du catalogue, tandis que les sÃ©ries reprÃ©sentent 30,4%. Cette rÃ©partition rÃ©vÃ¨le la stratÃ©gie de Netflix de privilÃ©gier les contenus courts (films) pour satisfaire une audience variÃ©e.
     </div>
     <div class="graph-frame">
-      <iframe src="../../tf_venv/AnalyseP/iframe_figures/figure_5.html" height="450"></iframe>
+      <iframe src="figures/figure_5.html" height="450"></iframe>
     </div>
     <div class="insight" style="margin-top:1.5rem;">
-      <div class="insight-title">💡 Interprétation</div>
-      <p>Avec <strong>6 131 films</strong> contre <strong>2 676 séries</strong>, Netflix a historiquement misé sur la quantité de films pour élargir son catalogue rapidement. Cependant, la tendance récente montre une montée en puissance des séries originales Netflix, qui génèrent davantage d'engagement et de fidélisation des abonnés.</p>
+      <div class="insight-title">ðŸ’¡ InterprÃ©tation</div>
+      <p>Avec <strong>6 131 films</strong> contre <strong>2 676 sÃ©ries</strong>, Netflix a historiquement misÃ© sur la quantitÃ© de films pour Ã©largir son catalogue rapidement. Cependant, la tendance rÃ©cente montre une montÃ©e en puissance des sÃ©ries originales Netflix, qui gÃ©nÃ¨rent davantage d'engagement et de fidÃ©lisation des abonnÃ©s.</p>
     </div>
   </div>
 
   <!-- GRAPHIQUE 1B -->
   <div class="graph-section">
-    <div class="graph-title">📈 Évolution des ajouts au catalogue par année</div>
+    <div class="graph-title">ðŸ“ˆ Ã‰volution des ajouts au catalogue par annÃ©e</div>
     <div class="divider"></div>
     <div class="graph-desc">
-      Ce graphique en lignes montre l'évolution annuelle des ajouts pour les films et les séries entre 2008 et 2021. On observe une <strong style="color:#E50914">croissance explosive à partir de 2015</strong>, avec un pic en 2019 pour les deux types de contenu, suivi d'une légère baisse en 2020-2021 probablement liée à la pandémie COVID-19.
+      Ce graphique en lignes montre l'Ã©volution annuelle des ajouts pour les films et les sÃ©ries entre 2008 et 2021. On observe une <strong style="color:#E50914">croissance explosive Ã  partir de 2015</strong>, avec un pic en 2019 pour les deux types de contenu, suivi d'une lÃ©gÃ¨re baisse en 2020-2021 probablement liÃ©e Ã  la pandÃ©mie COVID-19.
     </div>
     <div class="graph-frame">
-      <iframe src="../../tf_venv/AnalyseP/iframe_figures/figure_7.html" height="440"></iframe>
+      <iframe src="figures/figure_7.html" height="440"></iframe>
     </div>
     <div class="insight" style="margin-top:1.5rem;">
-      <div class="insight-title">💡 Interprétation</div>
-      <p>La phase d'accélération <strong>2015–2019</strong> correspond à l'expansion internationale de Netflix dans plus de 130 pays. Le ralentissement de 2020 s'explique par les perturbations de production liées au COVID-19, qui ont retardé de nombreuses sorties. La tendance globale reste fortement haussière, témoignant de la stratégie d'investissement massif dans le contenu.</p>
+      <div class="insight-title">ðŸ’¡ InterprÃ©tation</div>
+      <p>La phase d'accÃ©lÃ©ration <strong>2015â€“2019</strong> correspond Ã  l'expansion internationale de Netflix dans plus de 130 pays. Le ralentissement de 2020 s'explique par les perturbations de production liÃ©es au COVID-19, qui ont retardÃ© de nombreuses sorties. La tendance globale reste fortement haussiÃ¨re, tÃ©moignant de la stratÃ©gie d'investissement massif dans le contenu.</p>
     </div>
   </div>
 
   <!-- CONCLUSION -->
   <div class="conclusion">
-    <h3>🔑 Points clés de cette analyse</h3>
+    <h3>ðŸ”‘ Points clÃ©s de cette analyse</h3>
     <ul>
-      <li>Netflix propose <strong>8 807 titres</strong> au total, dont une large majorité de films (69,6%) par rapport aux séries (30,4%).</li>
-      <li>La croissance du catalogue a été <strong>exponentielle de 2015 à 2019</strong>, période d'expansion internationale de la plateforme.</li>
-      <li>L'année <strong>2019 représente le pic</strong> d'ajouts de contenu, avec plus de 2 000 nouveaux titres cette année-là.</li>
-      <li>La légère baisse en 2020-2021 est conjoncturelle (COVID) et ne remet pas en question la <strong>trajectoire de croissance</strong> long terme.</li>
+      <li>Netflix propose <strong>8 807 titres</strong> au total, dont une large majoritÃ© de films (69,6%) par rapport aux sÃ©ries (30,4%).</li>
+      <li>La croissance du catalogue a Ã©tÃ© <strong>exponentielle de 2015 Ã  2019</strong>, pÃ©riode d'expansion internationale de la plateforme.</li>
+      <li>L'annÃ©e <strong>2019 reprÃ©sente le pic</strong> d'ajouts de contenu, avec plus de 2 000 nouveaux titres cette annÃ©e-lÃ .</li>
+      <li>La lÃ©gÃ¨re baisse en 2020-2021 est conjoncturelle (COVID) et ne remet pas en question la <strong>trajectoire de croissance</strong> long terme.</li>
     </ul>
   </div>
 
   <!-- PAGINATION -->
   <div class="pagination">
-    <a class="pag-btn pag-prev" href="../index.html">← Accueil</a>
-    <a class="pag-btn pag-next" href="analyse2_geo.html">Analyse Géographique →</a>
+    <a class="pag-btn pag-prev" href="index.html">← Accueil</a>
+    <a class="pag-btn pag-next" href="analyse2_geo.html">Analyse GÃ©ographique â†’</a>
   </div>
 
 </div>
 </body>
 </html>
+

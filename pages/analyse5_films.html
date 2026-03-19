@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Analyse 5 — Films vs Séries | Netflix</title>
+  <title>Analyse 5 â€” Films vs SÃ©ries | Netflix</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
   <style>
     :root { --red:#E50914; --dark:#141414; --dark2:#1f1f1f; --dark3:#2a2a2a; --gray:#808080; --light:#e5e5e5; --white:#ffffff; }
@@ -37,97 +37,124 @@
     .conclusion h3 { font-size:1.1rem; font-weight:700; color:#fff; margin-bottom:1rem; }
     .conclusion ul { list-style:none; display:flex; flex-direction:column; gap:0.7rem; }
     .conclusion ul li { font-size:0.92rem; color:#ccc; padding-left:1.5rem; position:relative; line-height:1.6; }
-    .conclusion ul li::before { content:'▶'; color:var(--red); font-size:0.6rem; position:absolute; left:0; top:4px; }
+    .conclusion ul li::before { content:'â–¶'; color:var(--red); font-size:0.6rem; position:absolute; left:0; top:4px; }
     .pagination { display:flex; justify-content:space-between; align-items:center; margin-top:4rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.07); }
     .pag-btn { display:inline-flex; align-items:center; gap:0.5rem; padding:0.7rem 1.5rem; border-radius:6px; text-decoration:none; font-size:0.88rem; font-weight:600; transition:all .2s; }
     .pag-prev { background:var(--dark2); color:#aaa; border:1px solid rgba(255,255,255,0.08); }
     .pag-next { background:var(--red); color:#fff; }
     .pag-next:hover { background:#c40812; }
     .divider { width:50px; height:3px; background:var(--red); border-radius:2px; margin:1rem 0 2rem; }
+
+    /* ── RESPONSIVE MOBILE ── */
+    @media (max-width: 768px) {
+      .navbar { padding: 0 1rem; flex-wrap: wrap; height: auto; min-height: 56px; gap: 0.3rem; padding-top: 0.5rem; padding-bottom: 0.5rem; }
+      .nav-links { display: none; }
+      .navbar-brand { font-size: 1.1rem; }
+      .page-hero { padding: 2.5rem 1rem 2rem; }
+      .page-icon { font-size: 2.5rem; }
+      .page-hero h1 { font-size: 1.6rem; }
+      .page-hero p { font-size: 0.9rem; }
+      .content { padding: 2rem 1rem; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+      .stat-val { font-size: 1.5rem; }
+      .graph-frame iframe { height: 320px !important; }
+      .graph-title { font-size: 1.1rem; }
+      .graph-desc { font-size: 0.85rem; }
+      .insight { padding: 1rem 1.2rem; }
+      .insight p { font-size: 0.88rem; }
+      .conclusion { padding: 1.5rem; }
+      .conclusion ul li { font-size: 0.88rem; }
+      .pagination { flex-direction: column; gap: 1rem; }
+      .pag-btn { width: 100%; justify-content: center; }
+    }
+    @media (max-width: 480px) {
+      .stats-row { grid-template-columns: 1fr 1fr; }
+    }
   </style>
 </head>
 <body>
 <nav class="navbar">
-  <a class="navbar-brand" href="../index.html">NETFLIX</a>
+  <a class="navbar-brand" href="index.html">NETFLIX</a>
   <ul class="nav-links">
-    <li><a href="analyse1_apercu.html">01 Aperçu</a></li>
-    <li><a href="analyse2_geo.html">02 Géo</a></li>
+    <li><a href="analyse1_apercu.html">01 AperÃ§u</a></li>
+    <li><a href="analyse2_geo.html">02 GÃ©o</a></li>
     <li><a href="analyse3_genres.html">03 Genres</a></li>
     <li><a href="analyse4_temps.html">04 Temporel</a></li>
-    <li><a href="analyse5_films.html" class="active">05 Films/Séries</a></li>
+    <li><a href="analyse5_films.html" class="active">05 Films/SÃ©ries</a></li>
     <li><a href="analyse6_acteurs.html">06 Acteurs</a></li>
   </ul>
-  <a class="nav-back" href="../index.html">← Accueil</a>
+  <a class="nav-back" href="index.html">← Accueil</a>
 </nav>
 
 <div class="page-hero">
   <div class="page-num">Analyse 05 / 06</div>
-  <div class="page-icon">🎬</div>
-  <h1>Films vs Séries en Détail</h1>
-  <p>Comparaison approfondie : durée des films, nombre de saisons des séries, et distribution des durées selon les pays producteurs.</p>
+  <div class="page-icon">ðŸŽ¬</div>
+  <h1>Films vs SÃ©ries en DÃ©tail</h1>
+  <p>Comparaison approfondie : durÃ©e des films, nombre de saisons des sÃ©ries, et distribution des durÃ©es selon les pays producteurs.</p>
 </div>
 
 <div class="content">
   <div class="stats-row">
-    <div class="stat-card"><div class="stat-val">~100 min</div><div class="stat-label">Durée moyenne film</div></div>
-    <div class="stat-card"><div class="stat-val">99 min</div><div class="stat-label">Durée médiane film</div></div>
-    <div class="stat-card"><div class="stat-val">1,76</div><div class="stat-label">Saisons moy. série</div></div>
-    <div class="stat-card"><div class="stat-val">67%</div><div class="stat-label">Séries avec 1 saison</div></div>
+    <div class="stat-card"><div class="stat-val">~100 min</div><div class="stat-label">DurÃ©e moyenne film</div></div>
+    <div class="stat-card"><div class="stat-val">99 min</div><div class="stat-label">DurÃ©e mÃ©diane film</div></div>
+    <div class="stat-card"><div class="stat-val">1,76</div><div class="stat-label">Saisons moy. sÃ©rie</div></div>
+    <div class="stat-card"><div class="stat-val">67%</div><div class="stat-label">SÃ©ries avec 1 saison</div></div>
   </div>
 
   <div class="graph-section">
-    <div class="graph-title">🎬 Durée des Films Netflix — Distribution statistique</div>
+    <div class="graph-title">ðŸŽ¬ DurÃ©e des Films Netflix â€” Distribution statistique</div>
     <div class="divider"></div>
-    <div class="graph-desc">Ce double graphique (boxplot + histogramme) analyse la distribution des durées des films Netflix. Le boxplot révèle la dispersion statistique, tandis que l'histogramme montre la forme de la distribution. La <strong style="color:#E50914">durée médiane de 99 minutes</strong> confirme que Netflix suit le standard cinématographique.</div>
+    <div class="graph-desc">Ce double graphique (boxplot + histogramme) analyse la distribution des durÃ©es des films Netflix. Le boxplot rÃ©vÃ¨le la dispersion statistique, tandis que l'histogramme montre la forme de la distribution. La <strong style="color:#E50914">durÃ©e mÃ©diane de 99 minutes</strong> confirme que Netflix suit le standard cinÃ©matographique.</div>
     <div class="graph-frame">
-      <iframe src="../../tf_venv/AnalyseP/iframe_figures/figure_18.html" height="470"></iframe>
+      <iframe src="figures/figure_18.html" height="470"></iframe>
     </div>
     <div class="insight" style="margin-top:1.5rem;">
-      <div class="insight-title">💡 Interprétation</div>
-      <p>La distribution des durées suit une <strong>courbe quasi-normale</strong> centrée autour de 90–110 minutes, ce qui correspond à la durée standard d'un film de cinéma. Les valeurs extrêmes (films très courts &lt;50 min ou très longs &gt;200 min) sont des outliers liés aux documentaires courts et aux épopées historiques. L'écart-type de 26 minutes indique une <strong>relative homogénéité</strong> des durées.</p>
-    </div>
-  </div>
-
-  <div class="graph-section">
-    <div class="graph-title">📺 Distribution du nombre de saisons des séries</div>
-    <div class="divider"></div>
-    <div class="graph-desc">Ce bar chart montre combien de séries Netflix ont 1, 2, 3... saisons. La prédominance des séries à <strong style="color:#E50914">1 saison unique (67%)</strong> est un phénomène caractéristique de la stratégie Netflix de lancer beaucoup de nouvelles séries et d'en renouveler sélectivement.</div>
-    <div class="graph-frame">
-      <iframe src="../../tf_venv/AnalyseP/iframe_figures/figure_19.html" height="450"></iframe>
-    </div>
-    <div class="insight" style="margin-top:1.5rem;">
-      <div class="insight-title">💡 Interprétation</div>
-      <p>La forte proportion de séries à <strong>1 saison (67%)</strong> s'explique par deux facteurs : les mini-séries conçues en saison unique (limited series), et les séries annulées après leur première saison faute d'audience suffisante. La moyenne de 1,76 saisons par série témoigne de la <strong>sélectivité de Netflix</strong> dans les renouvellements, basée sur les données d'audience.</p>
+      <div class="insight-title">ðŸ’¡ InterprÃ©tation</div>
+      <p>La distribution des durÃ©es suit une <strong>courbe quasi-normale</strong> centrÃ©e autour de 90â€“110 minutes, ce qui correspond Ã  la durÃ©e standard d'un film de cinÃ©ma. Les valeurs extrÃªmes (films trÃ¨s courts &lt;50 min ou trÃ¨s longs &gt;200 min) sont des outliers liÃ©s aux documentaires courts et aux Ã©popÃ©es historiques. L'Ã©cart-type de 26 minutes indique une <strong>relative homogÃ©nÃ©itÃ©</strong> des durÃ©es.</p>
     </div>
   </div>
 
   <div class="graph-section">
-    <div class="graph-title">🎻 Distribution des durées de films par pays (Top 8)</div>
+    <div class="graph-title">ðŸ“º Distribution du nombre de saisons des sÃ©ries</div>
     <div class="divider"></div>
-    <div class="graph-desc">Le violin plot combine boxplot et distribution pour chaque pays. On observe des <strong style="color:#E50914">différences culturelles significatives</strong> dans les durées de films selon les pays : les films indiens (Bollywood) ont tendance à être plus longs, tandis que les films japonais sont souvent plus courts.</div>
+    <div class="graph-desc">Ce bar chart montre combien de sÃ©ries Netflix ont 1, 2, 3... saisons. La prÃ©dominance des sÃ©ries Ã  <strong style="color:#E50914">1 saison unique (67%)</strong> est un phÃ©nomÃ¨ne caractÃ©ristique de la stratÃ©gie Netflix de lancer beaucoup de nouvelles sÃ©ries et d'en renouveler sÃ©lectivement.</div>
     <div class="graph-frame">
-      <iframe src="../../tf_venv/AnalyseP/iframe_figures/figure_20.html" height="500"></iframe>
+      <iframe src="figures/figure_19.html" height="450"></iframe>
     </div>
     <div class="insight" style="margin-top:1.5rem;">
-      <div class="insight-title">💡 Interprétation</div>
-      <p>L'Inde se distingue par une <strong>distribution plus étalée vers les durées longues</strong>, caractéristique des films Bollywood (danses, chansons, entracte). Les États-Unis et le Royaume-Uni ont des distributions très similaires, centrées sur 90–120 min. Le Japon montre une distribution bimodale typique avec ses films d'animation plus courts et ses films live plus longs.</p>
+      <div class="insight-title">ðŸ’¡ InterprÃ©tation</div>
+      <p>La forte proportion de sÃ©ries Ã  <strong>1 saison (67%)</strong> s'explique par deux facteurs : les mini-sÃ©ries conÃ§ues en saison unique (limited series), et les sÃ©ries annulÃ©es aprÃ¨s leur premiÃ¨re saison faute d'audience suffisante. La moyenne de 1,76 saisons par sÃ©rie tÃ©moigne de la <strong>sÃ©lectivitÃ© de Netflix</strong> dans les renouvellements, basÃ©e sur les donnÃ©es d'audience.</p>
+    </div>
+  </div>
+
+  <div class="graph-section">
+    <div class="graph-title">ðŸŽ» Distribution des durÃ©es de films par pays (Top 8)</div>
+    <div class="divider"></div>
+    <div class="graph-desc">Le violin plot combine boxplot et distribution pour chaque pays. On observe des <strong style="color:#E50914">diffÃ©rences culturelles significatives</strong> dans les durÃ©es de films selon les pays : les films indiens (Bollywood) ont tendance Ã  Ãªtre plus longs, tandis que les films japonais sont souvent plus courts.</div>
+    <div class="graph-frame">
+      <iframe src="figures/figure_20.html" height="500"></iframe>
+    </div>
+    <div class="insight" style="margin-top:1.5rem;">
+      <div class="insight-title">ðŸ’¡ InterprÃ©tation</div>
+      <p>L'Inde se distingue par une <strong>distribution plus Ã©talÃ©e vers les durÃ©es longues</strong>, caractÃ©ristique des films Bollywood (danses, chansons, entracte). Les Ã‰tats-Unis et le Royaume-Uni ont des distributions trÃ¨s similaires, centrÃ©es sur 90â€“120 min. Le Japon montre une distribution bimodale typique avec ses films d'animation plus courts et ses films live plus longs.</p>
     </div>
   </div>
 
   <div class="conclusion">
-    <h3>🔑 Points clés de cette analyse</h3>
+    <h3>ðŸ”‘ Points clÃ©s de cette analyse</h3>
     <ul>
-      <li>La <strong>durée médiane des films Netflix est 99 minutes</strong>, parfaitement alignée avec le standard industriel du cinéma mondial.</li>
-      <li><strong>67% des séries n'ont qu'une seule saison</strong>, reflet de la stratégie de lancement massif et de renouvellement sélectif de Netflix.</li>
-      <li>Les <strong>différences culturelles de durée</strong> entre pays sont significatives : Bollywood (long), Japon (bimodal), USA/UK (standard).</li>
-      <li>La série Netflix la plus longue du dataset compte <strong>15 saisons</strong>, montrant que certaines franchises bénéficient d'une longévité exceptionnelle.</li>
+      <li>La <strong>durÃ©e mÃ©diane des films Netflix est 99 minutes</strong>, parfaitement alignÃ©e avec le standard industriel du cinÃ©ma mondial.</li>
+      <li><strong>67% des sÃ©ries n'ont qu'une seule saison</strong>, reflet de la stratÃ©gie de lancement massif et de renouvellement sÃ©lectif de Netflix.</li>
+      <li>Les <strong>diffÃ©rences culturelles de durÃ©e</strong> entre pays sont significatives : Bollywood (long), Japon (bimodal), USA/UK (standard).</li>
+      <li>La sÃ©rie Netflix la plus longue du dataset compte <strong>15 saisons</strong>, montrant que certaines franchises bÃ©nÃ©ficient d'une longÃ©vitÃ© exceptionnelle.</li>
     </ul>
   </div>
 
   <div class="pagination">
-    <a class="pag-btn pag-prev" href="analyse4_temps.html">← Analyse Temporelle</a>
-    <a class="pag-btn pag-next" href="analyse6_acteurs.html">Acteurs &amp; Réalisateurs →</a>
+    <a class="pag-btn pag-prev" href="analyse4_temps.html">â† Analyse Temporelle</a>
+    <a class="pag-btn pag-next" href="analyse6_acteurs.html">Acteurs &amp; RÃ©alisateurs â†’</a>
   </div>
 </div>
 </body>
 </html>
+

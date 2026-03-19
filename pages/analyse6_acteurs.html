@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Analyse 6 — Acteurs & Réalisateurs | Netflix</title>
+  <title>Analyse 6 â€” Acteurs & RÃ©alisateurs | Netflix</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
   <style>
     :root { --red:#E50914; --dark:#141414; --dark2:#1f1f1f; --gray:#808080; --light:#e5e5e5; }
@@ -37,7 +37,7 @@
     .conclusion h3 { font-size:1.1rem; font-weight:700; color:#fff; margin-bottom:1rem; }
     .conclusion ul { list-style:none; display:flex; flex-direction:column; gap:0.7rem; }
     .conclusion ul li { font-size:0.92rem; color:#ccc; padding-left:1.5rem; position:relative; line-height:1.6; }
-    .conclusion ul li::before { content:'▶'; color:var(--red); font-size:0.6rem; position:absolute; left:0; top:4px; }
+    .conclusion ul li::before { content:'â–¶'; color:var(--red); font-size:0.6rem; position:absolute; left:0; top:4px; }
     .final-band { background:linear-gradient(135deg,#1a0000,#2d0505,#1a0000); border-top:1px solid rgba(229,9,20,0.2); border-bottom:1px solid rgba(229,9,20,0.2); padding:3rem 2rem; text-align:center; margin-top:4rem; }
     .final-band h2 { font-size:1.8rem; font-weight:900; color:#fff; margin-bottom:0.8rem; }
     .final-band p { color:#888; max-width:500px; margin:0 auto 2rem; line-height:1.7; }
@@ -49,111 +49,141 @@
     .pag-next { background:var(--red); color:#fff; }
     .pag-next:hover { background:#c40812; }
     .divider { width:50px; height:3px; background:var(--red); border-radius:2px; margin:1rem 0 2rem; }
+
+    /* ── RESPONSIVE MOBILE ── */
+    @media (max-width: 768px) {
+      .navbar { padding: 0 1rem; flex-wrap: wrap; height: auto; min-height: 56px; gap: 0.3rem; padding-top: 0.5rem; padding-bottom: 0.5rem; }
+      .nav-links { display: none; }
+      .navbar-brand { font-size: 1.1rem; }
+      .page-hero { padding: 2.5rem 1rem 2rem; }
+      .page-icon { font-size: 2.5rem; }
+      .page-hero h1 { font-size: 1.6rem; }
+      .page-hero p { font-size: 0.9rem; }
+      .content { padding: 2rem 1rem; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+      .stat-val { font-size: 1.5rem; }
+      .graph-frame iframe { height: 320px !important; }
+      .graph-title { font-size: 1.1rem; }
+      .graph-desc { font-size: 0.85rem; }
+      .insight { padding: 1rem 1.2rem; }
+      .insight p { font-size: 0.88rem; }
+      .conclusion { padding: 1.5rem; }
+      .conclusion ul li { font-size: 0.88rem; }
+      .pagination { flex-direction: column; gap: 1rem; }
+      .pag-btn { width: 100%; justify-content: center; }
+      .final-band { padding: 2rem 1rem; }
+      .final-band h2 { font-size: 1.4rem; }
+      .final-band p { font-size: 0.9rem; }
+    }
+    @media (max-width: 480px) {
+      .stats-row { grid-template-columns: 1fr 1fr; }
+    }
   </style>
 </head>
 <body>
 <nav class="navbar">
-  <a class="navbar-brand" href="../index.html">NETFLIX</a>
+  <a class="navbar-brand" href="index.html">NETFLIX</a>
   <ul class="nav-links">
-    <li><a href="analyse1_apercu.html">01 Aperçu</a></li>
-    <li><a href="analyse2_geo.html">02 Géo</a></li>
+    <li><a href="analyse1_apercu.html">01 AperÃ§u</a></li>
+    <li><a href="analyse2_geo.html">02 GÃ©o</a></li>
     <li><a href="analyse3_genres.html">03 Genres</a></li>
     <li><a href="analyse4_temps.html">04 Temporel</a></li>
-    <li><a href="analyse5_films.html">05 Films/Séries</a></li>
+    <li><a href="analyse5_films.html">05 Films/SÃ©ries</a></li>
     <li><a href="analyse6_acteurs.html" class="active">06 Acteurs</a></li>
   </ul>
-  <a class="nav-back" href="../index.html">← Accueil</a>
+  <a class="nav-back" href="index.html">← Accueil</a>
 </nav>
 
 <div class="page-hero">
   <div class="page-num">Analyse 06 / 06</div>
-  <div class="page-icon">🌟</div>
-  <h1>Acteurs &amp; Réalisateurs</h1>
-  <p>Identification des talents les plus présents sur Netflix : top réalisateurs, top acteurs, et cartographie de leurs collaborations.</p>
+  <div class="page-icon">ðŸŒŸ</div>
+  <h1>Acteurs &amp; RÃ©alisateurs</h1>
+  <p>Identification des talents les plus prÃ©sents sur Netflix : top rÃ©alisateurs, top acteurs, et cartographie de leurs collaborations.</p>
 </div>
 
 <div class="content">
   <div class="stats-row">
-    <div class="stat-card"><div class="stat-val">4 528</div><div class="stat-label">Réalisateurs uniques</div></div>
-    <div class="stat-card"><div class="stat-val">Rajiv Chilaka</div><div class="stat-label">Réalisateur N°1 (22 titres)</div></div>
-    <div class="stat-card"><div class="stat-val">29,9%</div><div class="stat-label">Titres sans réalisateur</div></div>
+    <div class="stat-card"><div class="stat-val">4 528</div><div class="stat-label">RÃ©alisateurs uniques</div></div>
+    <div class="stat-card"><div class="stat-val">Rajiv Chilaka</div><div class="stat-label">RÃ©alisateur NÂ°1 (22 titres)</div></div>
+    <div class="stat-card"><div class="stat-val">29,9%</div><div class="stat-label">Titres sans rÃ©alisateur</div></div>
     <div class="stat-card"><div class="stat-val">9,4%</div><div class="stat-label">Titres sans casting</div></div>
   </div>
 
   <div class="graph-section">
-    <div class="graph-title">🎬 Top 15 Réalisateurs les plus présents</div>
+    <div class="graph-title">ðŸŽ¬ Top 15 RÃ©alisateurs les plus prÃ©sents</div>
     <div class="divider"></div>
-    <div class="graph-desc">Ce bar chart horizontal identifie les réalisateurs ayant le plus de titres dans le catalogue Netflix. <strong style="color:#E50914">Rajiv Chilaka domine</strong> avec 22 titres, suivi de réalisateurs principalement issus du cinéma indien et international, révélant la diversité des talents sur la plateforme.</div>
+    <div class="graph-desc">Ce bar chart horizontal identifie les rÃ©alisateurs ayant le plus de titres dans le catalogue Netflix. <strong style="color:#E50914">Rajiv Chilaka domine</strong> avec 22 titres, suivi de rÃ©alisateurs principalement issus du cinÃ©ma indien et international, rÃ©vÃ©lant la diversitÃ© des talents sur la plateforme.</div>
     <div class="graph-frame">
-      <iframe src="../../tf_venv/AnalyseP/iframe_figures/figure_21.html" height="520"></iframe>
+      <iframe src="figures/figure_21.html" height="520"></iframe>
     </div>
     <div class="insight" style="margin-top:1.5rem;">
-      <div class="insight-title">💡 Interprétation</div>
-      <p><strong>Rajiv Chilaka</strong>, réalisateur indien spécialisé en animation (Chhota Bheem), domine le classement grâce au volume de ses productions. La présence majoritaire de réalisateurs indiens dans ce top reflète la <strong>forte productivité de Bollywood</strong> et du cinéma indien sur Netflix. Les réalisateurs occidentaux ont moins de films mais souvent de plus gros budgets.</p>
+      <div class="insight-title">ðŸ’¡ InterprÃ©tation</div>
+      <p><strong>Rajiv Chilaka</strong>, rÃ©alisateur indien spÃ©cialisÃ© en animation (Chhota Bheem), domine le classement grÃ¢ce au volume de ses productions. La prÃ©sence majoritaire de rÃ©alisateurs indiens dans ce top reflÃ¨te la <strong>forte productivitÃ© de Bollywood</strong> et du cinÃ©ma indien sur Netflix. Les rÃ©alisateurs occidentaux ont moins de films mais souvent de plus gros budgets.</p>
     </div>
   </div>
 
   <div class="graph-section">
-    <div class="graph-title">🌟 Top 15 Acteurs les plus présents</div>
+    <div class="graph-title">ðŸŒŸ Top 15 Acteurs les plus prÃ©sents</div>
     <div class="divider"></div>
-    <div class="graph-desc">Ce graphique identifie les acteurs ayant le plus d'apparitions dans le catalogue Netflix. Le nombre d'apparitions compte chaque titre dans lequel l'acteur est listé. Les acteurs les plus fréquents révèlent les <strong style="color:#E50914">marchés géographiques prioritaires</strong> de Netflix.</div>
+    <div class="graph-desc">Ce graphique identifie les acteurs ayant le plus d'apparitions dans le catalogue Netflix. Le nombre d'apparitions compte chaque titre dans lequel l'acteur est listÃ©. Les acteurs les plus frÃ©quents rÃ©vÃ¨lent les <strong style="color:#E50914">marchÃ©s gÃ©ographiques prioritaires</strong> de Netflix.</div>
     <div class="graph-frame">
-      <iframe src="../../tf_venv/AnalyseP/iframe_figures/figure_22.html" height="520"></iframe>
+      <iframe src="figures/figure_22.html" height="520"></iframe>
     </div>
     <div class="insight" style="margin-top:1.5rem;">
-      <div class="insight-title">💡 Interprétation</div>
-      <p>Le top des acteurs est dominé par des stars du cinéma <strong>indien et japonais</strong>, ce qui confirme les volumes importants de contenu provenant de ces pays. Cette analyse peut aider Netflix à identifier ses <strong>partenaires talent clés</strong> par marché géographique et à orienter ses investissements dans des contrats d'exclusivité avec les acteurs les plus populaires localement.</p>
+      <div class="insight-title">ðŸ’¡ InterprÃ©tation</div>
+      <p>Le top des acteurs est dominÃ© par des stars du cinÃ©ma <strong>indien et japonais</strong>, ce qui confirme les volumes importants de contenu provenant de ces pays. Cette analyse peut aider Netflix Ã  identifier ses <strong>partenaires talent clÃ©s</strong> par marchÃ© gÃ©ographique et Ã  orienter ses investissements dans des contrats d'exclusivitÃ© avec les acteurs les plus populaires localement.</p>
     </div>
   </div>
 
   <div class="graph-section">
-    <div class="graph-title">☀️ Top 10 Réalisateurs — Type &amp; Pays (Sunburst)</div>
+    <div class="graph-title">â˜€ï¸ Top 10 RÃ©alisateurs â€” Type &amp; Pays (Sunburst)</div>
     <div class="divider"></div>
-    <div class="graph-desc">Le graphique sunburst décompose hiérarchiquement chaque réalisateur du top 10 par type de contenu (Film/Série) puis par pays. Chaque anneau représente un niveau de hiérarchie. Ce graphique est <strong style="color:#E50914">interactif</strong> : cliquez sur un segment pour zoomer.</div>
+    <div class="graph-desc">Le graphique sunburst dÃ©compose hiÃ©rarchiquement chaque rÃ©alisateur du top 10 par type de contenu (Film/SÃ©rie) puis par pays. Chaque anneau reprÃ©sente un niveau de hiÃ©rarchie. Ce graphique est <strong style="color:#E50914">interactif</strong> : cliquez sur un segment pour zoomer.</div>
     <div class="graph-frame">
-      <iframe src="../../tf_venv/AnalyseP/iframe_figures/figure_23.html" height="600"></iframe>
+      <iframe src="figures/figure_23.html" height="600"></iframe>
     </div>
     <div class="insight" style="margin-top:1.5rem;">
-      <div class="insight-title">💡 Interprétation</div>
-      <p>Le sunburst révèle que la plupart des top réalisateurs sont <strong>spécialisés dans un seul pays et un seul type</strong> de contenu. Très peu diversifient entre films et séries. Cette spécialisation est typique de l'industrie : les réalisateurs de cinéma restent dans leur format de prédilection et leur marché local.</p>
+      <div class="insight-title">ðŸ’¡ InterprÃ©tation</div>
+      <p>Le sunburst rÃ©vÃ¨le que la plupart des top rÃ©alisateurs sont <strong>spÃ©cialisÃ©s dans un seul pays et un seul type</strong> de contenu. TrÃ¨s peu diversifient entre films et sÃ©ries. Cette spÃ©cialisation est typique de l'industrie : les rÃ©alisateurs de cinÃ©ma restent dans leur format de prÃ©dilection et leur marchÃ© local.</p>
     </div>
   </div>
 
   <div class="graph-section">
-    <div class="graph-title">🕸️ Réseau de collaborations — Top 6 réalisateurs &amp; leurs acteurs</div>
+    <div class="graph-title">ðŸ•¸ï¸ RÃ©seau de collaborations â€” Top 6 rÃ©alisateurs &amp; leurs acteurs</div>
     <div class="divider"></div>
-    <div class="graph-desc">Ce network graph visualise les collaborations entre les 6 réalisateurs les plus prolifiques (carrés rouges) et leurs acteurs récurrents (cercles gris). Plus deux nœuds sont reliés, plus ils ont collaboré. Ce graphique révèle les <strong style="color:#E50914">écosystèmes créatifs</strong> de Netflix.</div>
+    <div class="graph-desc">Ce network graph visualise les collaborations entre les 6 rÃ©alisateurs les plus prolifiques (carrÃ©s rouges) et leurs acteurs rÃ©currents (cercles gris). Plus deux nÅ“uds sont reliÃ©s, plus ils ont collaborÃ©. Ce graphique rÃ©vÃ¨le les <strong style="color:#E50914">Ã©cosystÃ¨mes crÃ©atifs</strong> de Netflix.</div>
     <div class="graph-frame">
-      <iframe src="../../tf_venv/AnalyseP/iframe_figures/figure_24.html" height="640"></iframe>
+      <iframe src="figures/figure_24.html" height="640"></iframe>
     </div>
     <div class="insight" style="margin-top:1.5rem;">
-      <div class="insight-title">💡 Interprétation</div>
-      <p>Le réseau montre des <strong>clusters distincts</strong> : chaque réalisateur a son propre groupe d'acteurs fidèles. Peu d'acteurs apparaissent chez plusieurs réalisateurs du top 6, indiquant une fidélité créative forte. Ces collaborations récurrentes sont un signe de <strong>confiance artistique</strong> et peuvent guider Netflix dans ses décisions de casting pour de nouvelles productions.</p>
+      <div class="insight-title">ðŸ’¡ InterprÃ©tation</div>
+      <p>Le rÃ©seau montre des <strong>clusters distincts</strong> : chaque rÃ©alisateur a son propre groupe d'acteurs fidÃ¨les. Peu d'acteurs apparaissent chez plusieurs rÃ©alisateurs du top 6, indiquant une fidÃ©litÃ© crÃ©ative forte. Ces collaborations rÃ©currentes sont un signe de <strong>confiance artistique</strong> et peuvent guider Netflix dans ses dÃ©cisions de casting pour de nouvelles productions.</p>
     </div>
   </div>
 
   <div class="conclusion">
-    <h3>🔑 Points clés de cette analyse</h3>
+    <h3>ðŸ”‘ Points clÃ©s de cette analyse</h3>
     <ul>
-      <li><strong>Rajiv Chilaka</strong> est le réalisateur le plus prolifique avec 22 titres, principalement des animations indiennes.</li>
-      <li>Le top 15 des réalisateurs et acteurs est dominé par des talents <strong>indiens et japonais</strong>, reflet des volumes de contenu asiatique.</li>
-      <li>Les réalisateurs sont très <strong>spécialisés</strong> par type (film/série) et par pays — peu diversifient leur portfolio sur Netflix.</li>
-      <li>Le réseau de collaborations révèle des <strong>écosystèmes créatifs stables</strong>, chaque réalisateur travaillant avec un noyau d'acteurs fidèles.</li>
+      <li><strong>Rajiv Chilaka</strong> est le rÃ©alisateur le plus prolifique avec 22 titres, principalement des animations indiennes.</li>
+      <li>Le top 15 des rÃ©alisateurs et acteurs est dominÃ© par des talents <strong>indiens et japonais</strong>, reflet des volumes de contenu asiatique.</li>
+      <li>Les rÃ©alisateurs sont trÃ¨s <strong>spÃ©cialisÃ©s</strong> par type (film/sÃ©rie) et par pays â€” peu diversifient leur portfolio sur Netflix.</li>
+      <li>Le rÃ©seau de collaborations rÃ©vÃ¨le des <strong>Ã©cosystÃ¨mes crÃ©atifs stables</strong>, chaque rÃ©alisateur travaillant avec un noyau d'acteurs fidÃ¨les.</li>
     </ul>
   </div>
 
   <div class="pagination">
     <a class="pag-btn pag-prev" href="analyse5_films.html">← Films vs Séries</a>
-    <a class="pag-btn pag-next" href="../index.html">Retour à l'accueil →</a>
+    <a class="pag-btn pag-next" href="index.html">Retour à l'accueil →</a>
   </div>
 </div>
 
 <!-- FINAL BAND -->
 <div class="final-band">
-  <h2>✅ Analyse Complète</h2>
-  <p>Vous avez parcouru les 6 axes d'analyse du catalogue Netflix. Retrouvez la synthèse complète sur la page d'accueil.</p>
-  <a class="btn-home" href="../index.html">← Retour à l'accueil</a>
+  <h2>âœ… Analyse ComplÃ¨te</h2>
+  <p>Vous avez parcouru les 6 axes d'analyse du catalogue Netflix. Retrouvez la synthÃ¨se complÃ¨te sur la page d'accueil.</p>
+  <a class="btn-home" href="index.html">← Retour à l'accueil</a>
 </div>
 
 </body>
 </html>
+

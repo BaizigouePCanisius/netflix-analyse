@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Analyse 3 — Genres | Netflix</title>
+  <title>Analyse 3 â€” Genres | Netflix</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
   <style>
     :root { --red:#E50914; --dark:#141414; --dark2:#1f1f1f; --dark3:#2a2a2a; --gray:#808080; --light:#e5e5e5; --white:#ffffff; }
@@ -37,97 +37,124 @@
     .conclusion h3 { font-size:1.1rem; font-weight:700; color:#fff; margin-bottom:1rem; }
     .conclusion ul { list-style:none; display:flex; flex-direction:column; gap:0.7rem; }
     .conclusion ul li { font-size:0.92rem; color:#ccc; padding-left:1.5rem; position:relative; line-height:1.6; }
-    .conclusion ul li::before { content:'▶'; color:var(--red); font-size:0.6rem; position:absolute; left:0; top:4px; }
+    .conclusion ul li::before { content:'â–¶'; color:var(--red); font-size:0.6rem; position:absolute; left:0; top:4px; }
     .pagination { display:flex; justify-content:space-between; align-items:center; margin-top:4rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.07); }
     .pag-btn { display:inline-flex; align-items:center; gap:0.5rem; padding:0.7rem 1.5rem; border-radius:6px; text-decoration:none; font-size:0.88rem; font-weight:600; transition:all .2s; }
     .pag-prev { background:var(--dark2); color:#aaa; border:1px solid rgba(255,255,255,0.08); }
     .pag-next { background:var(--red); color:#fff; }
     .pag-next:hover { background:#c40812; }
     .divider { width:50px; height:3px; background:var(--red); border-radius:2px; margin:1rem 0 2rem; }
+
+    /* ── RESPONSIVE MOBILE ── */
+    @media (max-width: 768px) {
+      .navbar { padding: 0 1rem; flex-wrap: wrap; height: auto; min-height: 56px; gap: 0.3rem; padding-top: 0.5rem; padding-bottom: 0.5rem; }
+      .nav-links { display: none; }
+      .navbar-brand { font-size: 1.1rem; }
+      .page-hero { padding: 2.5rem 1rem 2rem; }
+      .page-icon { font-size: 2.5rem; }
+      .page-hero h1 { font-size: 1.6rem; }
+      .page-hero p { font-size: 0.9rem; }
+      .content { padding: 2rem 1rem; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+      .stat-val { font-size: 1.5rem; }
+      .graph-frame iframe { height: 320px !important; }
+      .graph-title { font-size: 1.1rem; }
+      .graph-desc { font-size: 0.85rem; }
+      .insight { padding: 1rem 1.2rem; }
+      .insight p { font-size: 0.88rem; }
+      .conclusion { padding: 1.5rem; }
+      .conclusion ul li { font-size: 0.88rem; }
+      .pagination { flex-direction: column; gap: 1rem; }
+      .pag-btn { width: 100%; justify-content: center; }
+    }
+    @media (max-width: 480px) {
+      .stats-row { grid-template-columns: 1fr 1fr; }
+    }
   </style>
 </head>
 <body>
 <nav class="navbar">
-  <a class="navbar-brand" href="../index.html">NETFLIX</a>
+  <a class="navbar-brand" href="index.html">NETFLIX</a>
   <ul class="nav-links">
-    <li><a href="analyse1_apercu.html">01 Aperçu</a></li>
-    <li><a href="analyse2_geo.html">02 Géo</a></li>
+    <li><a href="analyse1_apercu.html">01 AperÃ§u</a></li>
+    <li><a href="analyse2_geo.html">02 GÃ©o</a></li>
     <li><a href="analyse3_genres.html" class="active">03 Genres</a></li>
     <li><a href="analyse4_temps.html">04 Temporel</a></li>
-    <li><a href="analyse5_films.html">05 Films/Séries</a></li>
+    <li><a href="analyse5_films.html">05 Films/SÃ©ries</a></li>
     <li><a href="analyse6_acteurs.html">06 Acteurs</a></li>
   </ul>
-  <a class="nav-back" href="../index.html">← Accueil</a>
+  <a class="nav-back" href="index.html">← Accueil</a>
 </nav>
 
 <div class="page-hero">
   <div class="page-num">Analyse 03 / 06</div>
-  <div class="page-icon">🎭</div>
+  <div class="page-icon">ðŸŽ­</div>
   <h1>Analyse des Genres</h1>
-  <p>Exploration des tendances de contenu sur Netflix : genres les plus fréquents, répartition Films/Séries et combinaisons populaires.</p>
+  <p>Exploration des tendances de contenu sur Netflix : genres les plus frÃ©quents, rÃ©partition Films/SÃ©ries et combinaisons populaires.</p>
 </div>
 
 <div class="content">
   <div class="stats-row">
-    <div class="stat-card"><div class="stat-val">2 752</div><div class="stat-label">International Movies (N°1)</div></div>
-    <div class="stat-card"><div class="stat-val">1 526</div><div class="stat-label">Dramas (N°2)</div></div>
-    <div class="stat-card"><div class="stat-val">1 432</div><div class="stat-label">Comedies (N°3)</div></div>
+    <div class="stat-card"><div class="stat-val">2 752</div><div class="stat-label">International Movies (NÂ°1)</div></div>
+    <div class="stat-card"><div class="stat-val">1 526</div><div class="stat-label">Dramas (NÂ°2)</div></div>
+    <div class="stat-card"><div class="stat-val">1 432</div><div class="stat-label">Comedies (NÂ°3)</div></div>
     <div class="stat-card"><div class="stat-val">42+</div><div class="stat-label">Genres uniques</div></div>
   </div>
 
   <div class="graph-section">
-    <div class="graph-title">🎭 Top 20 genres les plus fréquents</div>
+    <div class="graph-title">ðŸŽ­ Top 20 genres les plus frÃ©quents</div>
     <div class="divider"></div>
-    <div class="graph-desc">Ce bar chart horizontal présente les 20 genres les plus représentés dans le catalogue. Notez que chaque titre peut appartenir à <strong style="color:#E50914">plusieurs genres simultanément</strong>. Le genre "International Movies" domine, reflet de la diversité géographique du catalogue.</div>
+    <div class="graph-desc">Ce bar chart horizontal prÃ©sente les 20 genres les plus reprÃ©sentÃ©s dans le catalogue. Notez que chaque titre peut appartenir Ã  <strong style="color:#E50914">plusieurs genres simultanÃ©ment</strong>. Le genre "International Movies" domine, reflet de la diversitÃ© gÃ©ographique du catalogue.</div>
     <div class="graph-frame">
-      <iframe src="../../tf_venv/AnalyseP/iframe_figures/figure_13.html" height="600"></iframe>
+      <iframe src="figures/figure_13.html" height="600"></iframe>
     </div>
     <div class="insight" style="margin-top:1.5rem;">
-      <div class="insight-title">💡 Interprétation</div>
-      <p>La domination des <strong>"International Movies"</strong> reflète la stratégie de Netflix d'acquérir du contenu mondial. Les Dramas et Comedies constituent le socle traditionnel du catalogue. La forte présence des Documentaires et Stand-up Comedy montre l'importance du contenu non-fictionnel sur la plateforme.</p>
+      <div class="insight-title">ðŸ’¡ InterprÃ©tation</div>
+      <p>La domination des <strong>"International Movies"</strong> reflÃ¨te la stratÃ©gie de Netflix d'acquÃ©rir du contenu mondial. Les Dramas et Comedies constituent le socle traditionnel du catalogue. La forte prÃ©sence des Documentaires et Stand-up Comedy montre l'importance du contenu non-fictionnel sur la plateforme.</p>
     </div>
   </div>
 
   <div class="graph-section">
-    <div class="graph-title">📊 Top 15 genres — Répartition Films vs Séries</div>
+    <div class="graph-title">ðŸ“Š Top 15 genres â€” RÃ©partition Films vs SÃ©ries</div>
     <div class="divider"></div>
-    <div class="graph-desc">Ce stacked bar chart montre, pour chaque genre, la proportion de films (rouge) et de séries (gris). Certains genres sont <strong style="color:#E50914">quasi-exclusifs à un type</strong> : les anime sont majoritairement des séries, tandis que les comédies romantiques sont surtout des films.</div>
+    <div class="graph-desc">Ce stacked bar chart montre, pour chaque genre, la proportion de films (rouge) et de sÃ©ries (gris). Certains genres sont <strong style="color:#E50914">quasi-exclusifs Ã  un type</strong> : les anime sont majoritairement des sÃ©ries, tandis que les comÃ©dies romantiques sont surtout des films.</div>
     <div class="graph-frame">
-      <iframe src="../../tf_venv/AnalyseP/iframe_figures/figure_14.html" height="550"></iframe>
+      <iframe src="figures/figure_14.html" height="550"></iframe>
     </div>
     <div class="insight" style="margin-top:1.5rem;">
-      <div class="insight-title">💡 Interprétation</div>
-      <p>Les <strong>TV Shows dominent</strong> dans les genres "International TV Shows", "Crime TV Shows" et "Kids' TV". À l'inverse, "Action & Adventure" et "Comedies" sont principalement des films. Cette segmentation aide Netflix à adapter sa stratégie de recommandation selon le type de contenu préféré par segment d'audience.</p>
+      <div class="insight-title">ðŸ’¡ InterprÃ©tation</div>
+      <p>Les <strong>TV Shows dominent</strong> dans les genres "International TV Shows", "Crime TV Shows" et "Kids' TV". Ã€ l'inverse, "Action & Adventure" et "Comedies" sont principalement des films. Cette segmentation aide Netflix Ã  adapter sa stratÃ©gie de recommandation selon le type de contenu prÃ©fÃ©rÃ© par segment d'audience.</p>
     </div>
   </div>
 
   <div class="graph-section">
-    <div class="graph-title">🌳 Top 30 combinaisons de genres (Treemap)</div>
+    <div class="graph-title">ðŸŒ³ Top 30 combinaisons de genres (Treemap)</div>
     <div class="divider"></div>
-    <div class="graph-desc">Le Treemap visualise les combinaisons de genres les plus fréquentes. La taille de chaque rectangle est proportionnelle au nombre de titres. Les combinaisons les plus grandes révèlent les <strong style="color:#E50914">formules gagnantes</strong> du catalogue Netflix.</div>
+    <div class="graph-desc">Le Treemap visualise les combinaisons de genres les plus frÃ©quentes. La taille de chaque rectangle est proportionnelle au nombre de titres. Les combinaisons les plus grandes rÃ©vÃ¨lent les <strong style="color:#E50914">formules gagnantes</strong> du catalogue Netflix.</div>
     <div class="graph-frame">
-      <iframe src="../../tf_venv/AnalyseP/iframe_figures/figure_15.html" height="540"></iframe>
+      <iframe src="figures/figure_15.html" height="540"></iframe>
     </div>
     <div class="insight" style="margin-top:1.5rem;">
-      <div class="insight-title">💡 Interprétation</div>
-      <p>La combinaison <strong>"Documentaries"</strong> seule est très fréquente, tout comme "Dramas, International Movies". Ces combinaisons reflètent les formules editoriales récurrentes de Netflix : contenu international avec narration dramatique, documentaires sociaux, et comédies standalone.</p>
+      <div class="insight-title">ðŸ’¡ InterprÃ©tation</div>
+      <p>La combinaison <strong>"Documentaries"</strong> seule est trÃ¨s frÃ©quente, tout comme "Dramas, International Movies". Ces combinaisons reflÃ¨tent les formules editoriales rÃ©currentes de Netflix : contenu international avec narration dramatique, documentaires sociaux, et comÃ©dies standalone.</p>
     </div>
   </div>
 
   <div class="conclusion">
-    <h3>🔑 Points clés de cette analyse</h3>
+    <h3>ðŸ”‘ Points clÃ©s de cette analyse</h3>
     <ul>
-      <li>Le genre <strong>"International Movies"</strong> est le plus fréquent avec 2 752 occurrences, reflet de la diversité mondiale du catalogue.</li>
-      <li>Les <strong>Dramas et Comedies</strong> constituent le cœur historique du catalogue Netflix.</li>
-      <li>Certains genres sont <strong>typés par format</strong> : les anime et TV Dramas sont quasi-exclusivement des séries.</li>
-      <li>Les <strong>Documentaires</strong> représentent une catégorie majeure, répondant à une demande croissante de contenu éducatif et informatif.</li>
+      <li>Le genre <strong>"International Movies"</strong> est le plus frÃ©quent avec 2 752 occurrences, reflet de la diversitÃ© mondiale du catalogue.</li>
+      <li>Les <strong>Dramas et Comedies</strong> constituent le cÅ“ur historique du catalogue Netflix.</li>
+      <li>Certains genres sont <strong>typÃ©s par format</strong> : les anime et TV Dramas sont quasi-exclusivement des sÃ©ries.</li>
+      <li>Les <strong>Documentaires</strong> reprÃ©sentent une catÃ©gorie majeure, rÃ©pondant Ã  une demande croissante de contenu Ã©ducatif et informatif.</li>
     </ul>
   </div>
 
   <div class="pagination">
-    <a class="pag-btn pag-prev" href="analyse2_geo.html">← Analyse Géographique</a>
-    <a class="pag-btn pag-next" href="analyse4_temps.html">Analyse Temporelle →</a>
+    <a class="pag-btn pag-prev" href="analyse2_geo.html">â† Analyse GÃ©ographique</a>
+    <a class="pag-btn pag-next" href="analyse4_temps.html">Analyse Temporelle â†’</a>
   </div>
 </div>
 </body>
 </html>
+

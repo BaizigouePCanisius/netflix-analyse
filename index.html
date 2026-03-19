@@ -388,6 +388,29 @@
       border-radius: 2px;
       margin-bottom: 1.5rem;
     }
+
+    /* ── RESPONSIVE MOBILE ── */
+    @media (max-width: 768px) {
+      .navbar { padding: 0 1rem; flex-wrap: wrap; height: auto; min-height: 56px; gap: 0.5rem; }
+      .navbar-links { display: none; }
+      .navbar-brand { font-size: 1.1rem; }
+      .hero { min-height: 100svh; }
+      .netflix-logo { font-size: 2.5rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .hero p { font-size: 0.95rem; }
+      .kpi-strip { gap: 1rem; }
+      .kpi-divider { display: none; }
+      .kpi-value { font-size: 1.6rem; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .card { padding: 1.5rem; }
+      .synth-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .section { padding: 3rem 1rem; }
+      .btn-explore { padding: 0.8rem 1.8rem; font-size: 0.9rem; }
+    }
+    @media (max-width: 480px) {
+      .synth-grid { grid-template-columns: 1fr 1fr; }
+      .kpi-strip { gap: 0.8rem; }
+    }
   </style>
 </head>
 <body>
@@ -398,12 +421,12 @@
   <ul class="navbar-links">
     <li><a href="#analyses">Analyses</a></li>
     <li><a href="#synthese">Synthèse</a></li>
-    <li><a href="pages/analyse1_apercu.html">Aperçu</a></li>
-    <li><a href="pages/analyse2_geo.html">Géo</a></li>
-    <li><a href="pages/analyse3_genres.html">Genres</a></li>
-    <li><a href="pages/analyse4_temps.html">Temporel</a></li>
-    <li><a href="pages/analyse5_films.html">Films/Séries</a></li>
-    <li><a href="pages/analyse6_acteurs.html">Acteurs</a></li>
+    <li><a href="analyse1_apercu.html">Aperçu</a></li>
+    <li><a href="analyse2_geo.html">Géo</a></li>
+    <li><a href="analyse3_genres.html">Genres</a></li>
+    <li><a href="analyse4_temps.html">Temporel</a></li>
+    <li><a href="analyse5_films.html">Films/Séries</a></li>
+    <li><a href="analyse6_acteurs.html">Acteurs</a></li>
   </ul>
 </nav>
 
@@ -443,7 +466,7 @@
 
     <div class="cards-grid">
 
-      <a class="card" href="pages/analyse1_apercu.html">
+      <a class="card" href="analyse1_apercu.html">
         <div class="card-icon">📊</div>
         <div class="card-num">Analyse 01</div>
         <div class="card-title">Aperçu Général du Contenu</div>
@@ -456,7 +479,7 @@
         <div class="card-cta">Voir l'analyse</div>
       </a>
 
-      <a class="card" href="pages/analyse2_geo.html">
+      <a class="card" href="analyse2_geo.html">
         <div class="card-icon">🌍</div>
         <div class="card-num">Analyse 02</div>
         <div class="card-title">Analyse Géographique</div>
@@ -469,7 +492,7 @@
         <div class="card-cta">Voir l'analyse</div>
       </a>
 
-      <a class="card" href="pages/analyse3_genres.html">
+      <a class="card" href="analyse3_genres.html">
         <div class="card-icon">🎭</div>
         <div class="card-num">Analyse 03</div>
         <div class="card-title">Analyse des Genres</div>
@@ -482,7 +505,7 @@
         <div class="card-cta">Voir l'analyse</div>
       </a>
 
-      <a class="card" href="pages/analyse4_temps.html">
+      <a class="card" href="analyse4_temps.html">
         <div class="card-icon">📅</div>
         <div class="card-num">Analyse 04</div>
         <div class="card-title">Analyse Temporelle</div>
@@ -495,7 +518,7 @@
         <div class="card-cta">Voir l'analyse</div>
       </a>
 
-      <a class="card" href="pages/analyse5_films.html">
+      <a class="card" href="analyse5_films.html">
         <div class="card-icon">🎬</div>
         <div class="card-num">Analyse 05</div>
         <div class="card-title">Films vs Séries en Détail</div>
@@ -508,7 +531,7 @@
         <div class="card-cta">Voir l'analyse</div>
       </a>
 
-      <a class="card" href="pages/analyse6_acteurs.html">
+      <a class="card" href="analyse6_acteurs.html">
         <div class="card-icon">🌟</div>
         <div class="card-num">Analyse 06</div>
         <div class="card-title">Acteurs &amp; Réalisateurs</div>

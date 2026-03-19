@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Analyse 2 — Géographie | Netflix</title>
+  <title>Analyse 2 â€” GÃ©ographie | Netflix</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
   <style>
     :root { --red:#E50914; --dark:#141414; --dark2:#1f1f1f; --dark3:#2a2a2a; --gray:#808080; --light:#e5e5e5; --white:#ffffff; }
@@ -37,7 +37,7 @@
     .conclusion h3 { font-size:1.1rem; font-weight:700; color:#fff; margin-bottom:1rem; }
     .conclusion ul { list-style:none; display:flex; flex-direction:column; gap:0.7rem; }
     .conclusion ul li { font-size:0.92rem; color:#ccc; padding-left:1.5rem; position:relative; line-height:1.6; }
-    .conclusion ul li::before { content:'▶'; color:var(--red); font-size:0.6rem; position:absolute; left:0; top:4px; }
+    .conclusion ul li::before { content:'â–¶'; color:var(--red); font-size:0.6rem; position:absolute; left:0; top:4px; }
     .pagination { display:flex; justify-content:space-between; align-items:center; margin-top:4rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.07); }
     .pag-btn { display:inline-flex; align-items:center; gap:0.5rem; padding:0.7rem 1.5rem; border-radius:6px; text-decoration:none; font-size:0.88rem; font-weight:600; transition:all .2s; }
     .pag-prev { background:var(--dark2); color:#aaa; border:1px solid rgba(255,255,255,0.08); }
@@ -45,90 +45,117 @@
     .pag-next { background:var(--red); color:#fff; }
     .pag-next:hover { background:#c40812; }
     .divider { width:50px; height:3px; background:var(--red); border-radius:2px; margin:1rem 0 2rem; }
+
+    /* ── RESPONSIVE MOBILE ── */
+    @media (max-width: 768px) {
+      .navbar { padding: 0 1rem; flex-wrap: wrap; height: auto; min-height: 56px; gap: 0.3rem; padding-top: 0.5rem; padding-bottom: 0.5rem; }
+      .nav-links { display: none; }
+      .navbar-brand { font-size: 1.1rem; }
+      .page-hero { padding: 2.5rem 1rem 2rem; }
+      .page-icon { font-size: 2.5rem; }
+      .page-hero h1 { font-size: 1.6rem; }
+      .page-hero p { font-size: 0.9rem; }
+      .content { padding: 2rem 1rem; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+      .stat-val { font-size: 1.5rem; }
+      .graph-frame iframe { height: 320px !important; }
+      .graph-title { font-size: 1.1rem; }
+      .graph-desc { font-size: 0.85rem; }
+      .insight { padding: 1rem 1.2rem; }
+      .insight p { font-size: 0.88rem; }
+      .conclusion { padding: 1.5rem; }
+      .conclusion ul li { font-size: 0.88rem; }
+      .pagination { flex-direction: column; gap: 1rem; }
+      .pag-btn { width: 100%; justify-content: center; }
+    }
+    @media (max-width: 480px) {
+      .stats-row { grid-template-columns: 1fr 1fr; }
+    }
   </style>
 </head>
 <body>
 <nav class="navbar">
-  <a class="navbar-brand" href="../index.html">NETFLIX</a>
+  <a class="navbar-brand" href="index.html">NETFLIX</a>
   <ul class="nav-links">
-    <li><a href="analyse1_apercu.html">01 Aperçu</a></li>
-    <li><a href="analyse2_geo.html" class="active">02 Géo</a></li>
+    <li><a href="analyse1_apercu.html">01 AperÃ§u</a></li>
+    <li><a href="analyse2_geo.html" class="active">02 GÃ©o</a></li>
     <li><a href="analyse3_genres.html">03 Genres</a></li>
     <li><a href="analyse4_temps.html">04 Temporel</a></li>
-    <li><a href="analyse5_films.html">05 Films/Séries</a></li>
+    <li><a href="analyse5_films.html">05 Films/SÃ©ries</a></li>
     <li><a href="analyse6_acteurs.html">06 Acteurs</a></li>
   </ul>
-  <a class="nav-back" href="../index.html">← Accueil</a>
+  <a class="nav-back" href="index.html">← Accueil</a>
 </nav>
 
 <div class="page-hero">
   <div class="page-num">Analyse 02 / 06</div>
-  <div class="page-icon">🌍</div>
-  <h1>Analyse Géographique</h1>
-  <p>Cartographie de la production Netflix à travers le monde : quels pays dominent, comment se répartissent films et séries par région.</p>
+  <div class="page-icon">ðŸŒ</div>
+  <h1>Analyse GÃ©ographique</h1>
+  <p>Cartographie de la production Netflix Ã  travers le monde : quels pays dominent, comment se rÃ©partissent films et sÃ©ries par rÃ©gion.</p>
 </div>
 
 <div class="content">
   <div class="stats-row">
-    <div class="stat-card"><div class="stat-val">86</div><div class="stat-label">Pays représentés</div></div>
-    <div class="stat-card"><div class="stat-val">3 211</div><div class="stat-label">Titres USA (N°1)</div></div>
-    <div class="stat-card"><div class="stat-val">972</div><div class="stat-label">Titres Inde (N°2)</div></div>
-    <div class="stat-card"><div class="stat-val">748</div><div class="stat-label">Titres UK (N°3)</div></div>
+    <div class="stat-card"><div class="stat-val">86</div><div class="stat-label">Pays reprÃ©sentÃ©s</div></div>
+    <div class="stat-card"><div class="stat-val">3 211</div><div class="stat-label">Titres USA (NÂ°1)</div></div>
+    <div class="stat-card"><div class="stat-val">972</div><div class="stat-label">Titres Inde (NÂ°2)</div></div>
+    <div class="stat-card"><div class="stat-val">748</div><div class="stat-label">Titres UK (NÂ°3)</div></div>
   </div>
 
   <div class="graph-section">
-    <div class="graph-title">🌍 Top 15 pays producteurs de contenu Netflix</div>
+    <div class="graph-title">ðŸŒ Top 15 pays producteurs de contenu Netflix</div>
     <div class="divider"></div>
-    <div class="graph-desc">Ce bar chart horizontal classe les 15 pays contribuant le plus au catalogue Netflix. Les <strong style="color:#E50914">États-Unis dominent massivement</strong> avec 3 211 titres, suivis de l'Inde et du Royaume-Uni. Cette répartition reflète les marchés prioritaires de Netflix et ses investissements locaux.</div>
+    <div class="graph-desc">Ce bar chart horizontal classe les 15 pays contribuant le plus au catalogue Netflix. Les <strong style="color:#E50914">Ã‰tats-Unis dominent massivement</strong> avec 3 211 titres, suivis de l'Inde et du Royaume-Uni. Cette rÃ©partition reflÃ¨te les marchÃ©s prioritaires de Netflix et ses investissements locaux.</div>
     <div class="graph-frame">
-      <iframe src="../../tf_venv/AnalyseP/iframe_figures/figure_10.html" height="540"></iframe>
+      <iframe src="figures/figure_10.html" height="540"></iframe>
     </div>
     <div class="insight" style="margin-top:1.5rem;">
-      <div class="insight-title">💡 Interprétation</div>
-      <p>Les États-Unis représentent à eux seuls <strong>~36% du catalogue</strong>. La forte présence de l'Inde (972 titres) et du Japon reflète la stratégie d'expansion asiatique de Netflix. La présence de pays comme le Mexique, la Corée du Sud et l'Espagne témoigne des investissements dans les contenus locaux (ex : Money Heist, Squid Game).</p>
-    </div>
-  </div>
-
-  <div class="graph-section">
-    <div class="graph-title">🗺️ Distribution mondiale du contenu Netflix</div>
-    <div class="divider"></div>
-    <div class="graph-desc">La carte choroplèthe montre l'intensité de production par pays. Plus la couleur est rouge foncée, plus le pays contribue au catalogue. Les zones grises indiquent des pays absents du dataset. Cette carte révèle la <strong style="color:#E50914">concentration géographique</strong> du contenu Netflix.</div>
-    <div class="graph-frame">
-      <iframe src="../../tf_venv/AnalyseP/iframe_figures/figure_11.html" height="520"></iframe>
-    </div>
-    <div class="insight" style="margin-top:1.5rem;">
-      <div class="insight-title">💡 Interprétation</div>
-      <p>La carte confirme la domination anglophone (USA, UK, Canada, Australie). L'Asie du Sud (Inde) et du Sud-Est constituent un marché en forte croissance. L'Afrique reste sous-représentée, ce qui représente une <strong>opportunité stratégique</strong> pour Netflix d'investir dans des contenus africains originaux.</p>
+      <div class="insight-title">ðŸ’¡ InterprÃ©tation</div>
+      <p>Les Ã‰tats-Unis reprÃ©sentent Ã  eux seuls <strong>~36% du catalogue</strong>. La forte prÃ©sence de l'Inde (972 titres) et du Japon reflÃ¨te la stratÃ©gie d'expansion asiatique de Netflix. La prÃ©sence de pays comme le Mexique, la CorÃ©e du Sud et l'Espagne tÃ©moigne des investissements dans les contenus locaux (ex : Money Heist, Squid Game).</p>
     </div>
   </div>
 
   <div class="graph-section">
-    <div class="graph-title">📊 Films vs Séries — Top 10 pays producteurs</div>
+    <div class="graph-title">ðŸ—ºï¸ Distribution mondiale du contenu Netflix</div>
     <div class="divider"></div>
-    <div class="graph-desc">Ce bar chart groupé compare, pour chaque pays du Top 10, la part de films versus séries. On observe que <strong style="color:#E50914">certains pays sont spécialisés</strong> : l'Inde produit quasi-exclusivement des films, tandis que le Japon a une part plus équilibrée avec ses anime series.</div>
+    <div class="graph-desc">La carte choroplÃ¨the montre l'intensitÃ© de production par pays. Plus la couleur est rouge foncÃ©e, plus le pays contribue au catalogue. Les zones grises indiquent des pays absents du dataset. Cette carte rÃ©vÃ¨le la <strong style="color:#E50914">concentration gÃ©ographique</strong> du contenu Netflix.</div>
     <div class="graph-frame">
-      <iframe src="../../tf_venv/AnalyseP/iframe_figures/figure_12.html" height="450"></iframe>
+      <iframe src="figures/figure_11.html" height="520"></iframe>
     </div>
     <div class="insight" style="margin-top:1.5rem;">
-      <div class="insight-title">💡 Interprétation</div>
-      <p>L'Inde se distingue par une <strong>forte proportion de films Bollywood</strong>. Les États-Unis maintiennent un ratio 70/30 cohérent avec la moyenne globale. La Corée du Sud et le Japon ont une proportion de séries plus élevée, ce qui correspond à la popularité mondiale des K-dramas et des anime.</p>
+      <div class="insight-title">ðŸ’¡ InterprÃ©tation</div>
+      <p>La carte confirme la domination anglophone (USA, UK, Canada, Australie). L'Asie du Sud (Inde) et du Sud-Est constituent un marchÃ© en forte croissance. L'Afrique reste sous-reprÃ©sentÃ©e, ce qui reprÃ©sente une <strong>opportunitÃ© stratÃ©gique</strong> pour Netflix d'investir dans des contenus africains originaux.</p>
+    </div>
+  </div>
+
+  <div class="graph-section">
+    <div class="graph-title">ðŸ“Š Films vs SÃ©ries â€” Top 10 pays producteurs</div>
+    <div class="divider"></div>
+    <div class="graph-desc">Ce bar chart groupÃ© compare, pour chaque pays du Top 10, la part de films versus sÃ©ries. On observe que <strong style="color:#E50914">certains pays sont spÃ©cialisÃ©s</strong> : l'Inde produit quasi-exclusivement des films, tandis que le Japon a une part plus Ã©quilibrÃ©e avec ses anime series.</div>
+    <div class="graph-frame">
+      <iframe src="figures/figure_12.html" height="450"></iframe>
+    </div>
+    <div class="insight" style="margin-top:1.5rem;">
+      <div class="insight-title">ðŸ’¡ InterprÃ©tation</div>
+      <p>L'Inde se distingue par une <strong>forte proportion de films Bollywood</strong>. Les Ã‰tats-Unis maintiennent un ratio 70/30 cohÃ©rent avec la moyenne globale. La CorÃ©e du Sud et le Japon ont une proportion de sÃ©ries plus Ã©levÃ©e, ce qui correspond Ã  la popularitÃ© mondiale des K-dramas et des anime.</p>
     </div>
   </div>
 
   <div class="conclusion">
-    <h3>🔑 Points clés de cette analyse</h3>
+    <h3>ðŸ”‘ Points clÃ©s de cette analyse</h3>
     <ul>
-      <li>Les <strong>États-Unis dominent</strong> le catalogue avec 36% des titres, reflet de la structure historique de Netflix.</li>
+      <li>Les <strong>Ã‰tats-Unis dominent</strong> le catalogue avec 36% des titres, reflet de la structure historique de Netflix.</li>
       <li>L'<strong>Inde est le 2e contributeur</strong> avec 972 titres, signe de l'expansion massive en Asie du Sud.</li>
-      <li>Le contenu <strong>non-anglophone est en pleine croissance</strong> (Corée, Espagne, Japon), porté par des succès mondiaux.</li>
-      <li>L'Afrique reste très <strong>sous-représentée</strong> et constitue un axe de développement futur pour Netflix.</li>
+      <li>Le contenu <strong>non-anglophone est en pleine croissance</strong> (CorÃ©e, Espagne, Japon), portÃ© par des succÃ¨s mondiaux.</li>
+      <li>L'Afrique reste trÃ¨s <strong>sous-reprÃ©sentÃ©e</strong> et constitue un axe de dÃ©veloppement futur pour Netflix.</li>
     </ul>
   </div>
 
   <div class="pagination">
-    <a class="pag-btn pag-prev" href="analyse1_apercu.html">← Aperçu Général</a>
-    <a class="pag-btn pag-next" href="analyse3_genres.html">Analyse des Genres →</a>
+    <a class="pag-btn pag-prev" href="analyse1_apercu.html">â† AperÃ§u GÃ©nÃ©ral</a>
+    <a class="pag-btn pag-next" href="analyse3_genres.html">Analyse des Genres â†’</a>
   </div>
 </div>
 </body>
 </html>
+
